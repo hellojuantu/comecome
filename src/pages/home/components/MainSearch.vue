@@ -2,6 +2,8 @@
 import { vOnClickOutside } from '@vueuse/components'
 import type { Search } from '@/utils'
 import { getFaviconUrl, searchList } from '@/utils'
+import searchEngine from '@/utils/search-engine';
+import $_ from 'lodash'
 
 const settingStore = useSettingStore()
 
@@ -11,9 +13,14 @@ const keyword = ref('')
 // 从settings获取初始index
 const currentIndex = ref(0)
 
+const showKeyDownSel = ref(false)
+
+const noticeKeyList = ref<string[]>([])
+
 function initCurrentIndex() {
   currentIndex.value = searchList.findIndex(search => search.enName === settingStore.settings.search) || 0
 }
+
 watch(() => settingStore.settings.search, () => {
   initCurrentIndex()
 }, { immediate: true })
@@ -24,6 +31,7 @@ function search() {
   const currentSearch = searchList[currentIndex.value]
   window.open(`${currentSearch.value.url}?${currentSearch.value.key}=${keyword.value}`)
 }
+
 function _getFavicon(search: Search) {
   return search.favicon || getFaviconUrl(search.url)
 }
@@ -42,10 +50,12 @@ function toggleSelection() {
 const { iconStyle } = useIconStyle()
 
 const searchInputRef = ref<HTMLInputElement>()
+
 function handleCloseClick() {
   keyword.value = ''
   searchInputRef.value?.focus()
 }
+
 function handleKeyDown(e: KeyboardEvent) {
   const target = keyword.value.match(/^#[a-z]+/)
   if (target && e.key === 'Tab') {
@@ -58,60 +68,77 @@ function handleKeyDown(e: KeyboardEvent) {
     keyword.value = ''
   }
 }
+
+function handleInput(e: InputEvent) {
+  showKeyDownSel.value = true
+  requestEngApi()
+}
+
+interface Params {
+  eng: string,
+  list: string[];
+  wd: string,
+}
+
+let requestEngApi = $_.debounce(() => {
+  if (!keyword.value) {
+    return
+  }
+  const curSearch = searchList[currentIndex.value]
+  searchEngine.complete(curSearch.enName, keyword.value, (params: Params) => {
+    console.log("params", params.list)
+    noticeKeyList.value.splice(0, noticeKeyList.value.length)
+    noticeKeyList.value.push(...params.list)
+  })
+}, 100)
+
+function jumpSearch(i: number) {
+  showKeyDownSel.value = false
+  search()
+}
 </script>
 
 <template>
   <div my-24 flex-center>
-    <div flex bg-gray-200 h-40 class="search" dark="bg-18181a">
+    <div flex bg-gray-200 h-40 class="search" dark="bg-18181a" style="position: relative;">
+      <div v-on-click-outside="() => showKeyDownSel = false" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
+        <!-- keys recommand -->
+        <div v-show="showKeyDownSel" z-9 bg-fff l-0 t-100p dark="border-black-20 bg-$dark-main-bg-c">
+          <div v-for="(item, i) in noticeKeyList" :key="i" text-14 p-5
+            hover="bg-$site-hover-c" @click="jumpSearch(i)">
+            <div flex-left gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
+              <div>{{ item }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div v-on-click-outside="() => selectionVisible = false" relative flex-center w-50 class="search-sel">
         <div class="search-img" style="width: inherit; height: inherit;" @click="toggleSelection">
-          <img
-            :src="_getFavicon(searchList[currentIndex].value)"
-            :style="iconStyle"
-            cursor-pointer circle h-26 w-26
-            style="opacity: 0.8;filter: saturate(64%);margin: auto;position: relative;top: 50%;transform: translateY(-50%);"
-          >
+          <img :src="_getFavicon(searchList[currentIndex].value)" :style="iconStyle" cursor-pointer circle h-26 w-26
+            style="opacity: 0.8;filter: saturate(64%);margin: auto;position: relative;top: 50%;transform: translateY(-50%);">
         </div>
         <!-- 搜索引擎选择 -->
-        <div
-          v-show="selectionVisible"
-          absolute z-9 border-2 bg-fff l-0 t-100p w-200
-          dark="border-black-20 bg-$dark-main-bg-c"
-        >
-          <div
-            v-for="(item, i) in searchList"
-            :key="i"
-            flex cursor-pointer items-center justify-between text-14 p-5
-            hover="bg-$site-hover-c"
-            @click="changeSearch(i)"
-          >
+        <div v-show="selectionVisible" absolute z-9 border-2 bg-fff l-0 t-100p w-200
+          dark="border-black-20 bg-$dark-main-bg-c">
+          <div v-for="(item, i) in searchList" :key="i" flex cursor-pointer items-center justify-between text-14 p-5
+            hover="bg-$site-hover-c" @click="changeSearch(i)">
             <div flex-center gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
               <img :src="_getFavicon(item.value)" :style="iconStyle" circle h-20 w-20>
               <div>{{ item.name }}</div>
             </div>
-            <div v-if="currentIndex === i " i-carbon:checkmark text-18 />
+            <div v-if="currentIndex === i" i-carbon:checkmark text-18 />
           </div>
-        </div>
-      </div>
+        </div>        
+      </div>      
       <div flex items-center w-260>
-        <input
-          ref="searchInputRef"
-          v-model="keyword"
-          h-full w-full bg-inherit op-80 text="14 text-$text-c-1"
-          dark="text-$text-dark-c-1"
-          @keydown.enter="search"
-          @keydown="handleKeyDown"
-        >
-        <div
-          v-if="keyword.length > 0"
-          hover="op-80 rotate-180 scale-110"
-          i-carbon:close mx-4 cursor-pointer text-20 op-40 transition duration-300
-          @click="handleCloseClick"
-        />
+        <input ref="searchInputRef" v-model="keyword" h-full w-full bg-inherit op-80 text="14 text-$text-c-1"
+          dark="text-$text-dark-c-1" @keydown.enter="search" @keydown="handleKeyDown" @input="handleInput">
+        <div v-if="keyword.length > 0" hover="op-80 rotate-180 scale-110" i-carbon:close mx-4 cursor-pointer text-20
+          op-40 transition duration-300 @click="handleCloseClick"></div>        
       </div>
       <button flex-center gap-x-4 w-50 btn @click="search">
         <span i-carbon:search inline-block text-14 />
-      </button>
-    </div>
+      </button>      
+    </div>    
   </div>
 </template>
