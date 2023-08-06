@@ -25,6 +25,12 @@ dependencies:
   vuedraggable:
     specifier: ^4.1.0
     version: 4.1.0(vue@3.2.47)
+  axios:
+    specifier: ^1.3.3
+    version: 1.3.3(axios@1.3.3)
+  axios-jsonp:
+    specifier: ^1.0.4
+    version: 1.0.4(axios-jsonp@1.0.4)
 
 devDependencies:
   '@antfu/eslint-config':
