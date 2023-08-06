@@ -1,0 +1,53 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+    - run: bash .github/workflows/env-builder.sh ${{ secrets.ENV_DEFAULT_CONFIG_URL }} > .env.local
+    
+    - name: 🔨 Build Project Use Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: npm ci
+    - run: npm run test
+    - run: npm run build --if-present
+    
+    - name: 📂 Setup Pages
+      uses: actions/configure-pages@v2
+      
+    - name: 📂 Upload Pages artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./dist
+
+    - name: 📂 Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
