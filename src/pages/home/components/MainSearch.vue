@@ -98,9 +98,9 @@ let requestEngApi = $_.debounce(() => {
 }, 100)
 
 function jumpSearch(i: number) {
+  search()
   showKeyDownSel.value = false
   noticeKeyList.value.splice(0, noticeKeyList.value.length)
-  search()
 }
 </script>
 
