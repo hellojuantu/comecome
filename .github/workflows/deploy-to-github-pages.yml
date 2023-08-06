@@ -30,7 +30,6 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
-    - run: bash .github/workflows/env-builder.sh ${{ secrets.ENV_DEFAULT_CONFIG_URL }} > .env.local
     
     - name: 🔨 Build Project Use Node.js 16
       uses: actions/setup-node@v3
