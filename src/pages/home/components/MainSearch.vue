@@ -70,6 +70,11 @@ function handleKeyDown(e: KeyboardEvent) {
 }
 
 function handleInput(e: InputEvent) {
+  if (keyword.value.trim().length === 0) {
+    showKeyDownSel.value = false
+    noticeKeyList.value.splice(0, noticeKeyList.value.length)
+    return
+  }
   showKeyDownSel.value = true
   requestEngApi()
 }
@@ -86,7 +91,7 @@ let requestEngApi = $_.debounce(() => {
   }
   const curSearch = searchList[currentIndex.value]
   searchEngine.complete(curSearch.enName, keyword.value, (params: Params) => {
-    console.log("params", params.list)
+    // console.log("params", params.list)
     noticeKeyList.value.splice(0, noticeKeyList.value.length)
     noticeKeyList.value.push(...params.list)
   })
@@ -94,6 +99,7 @@ let requestEngApi = $_.debounce(() => {
 
 function jumpSearch(i: number) {
   showKeyDownSel.value = false
+  noticeKeyList.value.splice(0, noticeKeyList.value.length)
   search()
 }
 </script>
