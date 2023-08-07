@@ -44,6 +44,8 @@ function handleDragEnd(e: any) {
       class="flex gap-x-12"
       :list="siteStore.data"
       item-key="id"
+      :delay="1"
+      :fallbackTolerance="3"
       :component-data="{
         tag: 'div',
         type: 'transition-group',
