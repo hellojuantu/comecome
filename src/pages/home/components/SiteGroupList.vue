@@ -33,6 +33,8 @@ const { iconStyle } = useIconStyle()
       item-key="id"
       handle=".group__handle"
       drag-class="dragging"
+      :delay="1"
+      :fallbackTolerance="3"
       :component-data="{
         tag: 'div',
         type: 'transition-group',
@@ -79,6 +81,8 @@ const { iconStyle } = useIconStyle()
               v-bind="draggableOptions"
               @start="handleStart"
               @end="handleEnd"
+              :delay="1"
+              :fallbackTolerance="3"
             >
               <template #item="{ element: site, index }: { element: Site, index: number }">
                 <div>
