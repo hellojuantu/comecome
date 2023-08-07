@@ -17,6 +17,8 @@ const showKeyDownSel = ref(false)
 
 const noticeKeyList = ref<string[]>([])
 
+const selectedIndex = ref(0)
+
 function initCurrentIndex() {
   currentIndex.value = searchList.findIndex(search => search.enName === settingStore.settings.search) || 0
 }
@@ -73,8 +75,7 @@ function handleKeyDown(e: KeyboardEvent) {
 
 function handleInput(e: Event) {
   if (keyword.value.trim().length === 0) {
-    showKeyDownSel.value = false
-    noticeKeyList.value.splice(0, noticeKeyList.value.length)
+    clearNoticeKey() 
     return
   }
   showKeyDownSel.value = true
@@ -101,7 +102,11 @@ let requestEngApi = $_.debounce(() => {
 
 function jumpSearch(i: number) {
   keyword.value = noticeKeyList.value[i]
-  search()
+  search() 
+  clearNoticeKey() 
+}
+
+function clearNoticeKey() {
   showKeyDownSel.value = false
   noticeKeyList.value.splice(0, noticeKeyList.value.length)
 }
@@ -111,7 +116,7 @@ function keyNext() {
 }
 
 function keyPrev() {
-  console.log("keyPrev")  
+  console.log("keyPrev")
 }
 
 function handleKeyRecomend(e: Event) {
