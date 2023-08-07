@@ -103,6 +103,7 @@ let requestEngApi = $_.debounce(() => {
 }, 100)
 
 function jumpSearch(i: number) {
+  keyword.value = noticeKeyList.value[i]
   search() 
 }
 
@@ -135,8 +136,7 @@ function handleKeyRecomend(e: Event) {
 }
 
 function handleHover(i: number) {
-  console.log("hover i", i)
-  // selectedIndex.value = 
+  selectedIndex.value = i
 }
 </script>
 
@@ -147,7 +147,7 @@ function handleHover(i: number) {
         <!-- keys recommend -->
         <div v-show="showKeyDownSel" z-9 bg-fff l-0 t-100p dark="border-black-20 bg-$dark-main-bg-c">
           <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-14 p-5
-            hover="bg-$site-hover-c" @mouseover="handleHover(i + 1)" @click="jumpSearch(i + 1)" :class="{ 'bg-$site-hover-c': i + 1 === selectedIndex }">
+            @mouseover="handleHover(i + 1)" @click="jumpSearch(i + 1)" :class="{ 'bg-$site-hover-c': i + 1 === selectedIndex }">
             <div flex-left gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
               <div>{{ item }}</div>
             </div>
