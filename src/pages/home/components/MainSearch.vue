@@ -145,9 +145,9 @@ function handleHover(i: number) {
 <template>
   <div my-24 flex-center>
     <div flex bg-gray-200 h-40 class="search" dark="bg-18181a" style="position: relative;">
-      <div v-on-click-outside="handleKeyRecomend" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
+      <div v-show="showKeyDownSel" v-on-click-outside="handleKeyRecomend" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
         <!-- keys recommend -->
-        <div v-show="showKeyDownSel" z-9 bg-fff l-0 t-100p dark="border-black-20 bg-$dark-main-bg-c">
+        <div z-9 bg-fff l-0 t-100p dark="border-grey-8 bg-18181a">
           <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-14 p-5
             @mouseover="handleHover(i + 1)" @click="jumpSearch(i + 1)" :class="{ 'bg-$site-hover-c': i + 1 === selectedIndex }">
             <div flex-left gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
