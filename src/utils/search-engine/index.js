@@ -3,6 +3,7 @@ import engGoogle from './eng-google'
 import engBing from './eng-bing'
 import engQiuwenbaike from './eng-qiuwenbaike'
 import engWikipedia from './eng-wikipedia'
+import engSogou from './eng-sogou'
 
 const ENGINES = {
   Baidu: engBaidu,
@@ -10,6 +11,7 @@ const ENGINES = {
   Bing: engBing,
   Qiuwenbaike: engQiuwenbaike,
   Wikipedia: engWikipedia,
+  Sogou: engSogou
 }
 
 function target(eng, wd) {
