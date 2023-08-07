@@ -26,8 +26,9 @@ watch(() => settingStore.settings.search, () => {
 }, { immediate: true })
 
 function search() {
-  if (!keyword.value.trim())
+  if (!keyword.value.trim()) {
     return
+  }
   const currentSearch = searchList[currentIndex.value]
   window.open(`${currentSearch.value.url}?${currentSearch.value.key}=${keyword.value}`)
 }
@@ -62,14 +63,15 @@ function handleKeyDown(e: KeyboardEvent) {
     e.preventDefault()
     const s = target[0].replace('#', '')
     const index = searchList.findIndex(item => item.value.s === s)
-    if (index === -1)
+    if (index === -1) {
       return
+    }
     currentIndex.value = index
     keyword.value = ''
   }
 }
 
-function handleInput(e: InputEvent) {
+function handleInput(e: Event) {
   if (keyword.value.trim().length === 0) {
     showKeyDownSel.value = false
     noticeKeyList.value.splice(0, noticeKeyList.value.length)
@@ -98,17 +100,34 @@ let requestEngApi = $_.debounce(() => {
 }, 100)
 
 function jumpSearch(i: number) {
+  keyword.value = noticeKeyList.value[i]
   search()
   showKeyDownSel.value = false
   noticeKeyList.value.splice(0, noticeKeyList.value.length)
+}
+
+function keyNext() {
+  console.log("keyNext")
+}
+
+function keyPrev() {
+  console.log("keyPrev")  
+}
+
+function handleKeyRecomend(e: Event) {
+  let clickedInput = e.target == searchInputRef.value
+  if (clickedInput) {
+    return
+  }
+  showKeyDownSel.value = false
 }
 </script>
 
 <template>
   <div my-24 flex-center>
     <div flex bg-gray-200 h-40 class="search" dark="bg-18181a" style="position: relative;">
-      <div v-on-click-outside="() => showKeyDownSel = false" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
-        <!-- keys recommand -->
+      <div v-on-click-outside="handleKeyRecomend" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
+        <!-- keys recommend -->
         <div v-show="showKeyDownSel" z-9 bg-fff l-0 t-100p dark="border-black-20 bg-$dark-main-bg-c">
           <div v-for="(item, i) in noticeKeyList" :key="i" text-14 p-5
             hover="bg-$site-hover-c" @click="jumpSearch(i)">
@@ -138,7 +157,12 @@ function jumpSearch(i: number) {
       </div>      
       <div flex items-center w-260>
         <input ref="searchInputRef" v-model="keyword" h-full w-full bg-inherit op-80 text="14 text-$text-c-1"
-          dark="text-$text-dark-c-1" @keydown.enter="search" @keydown="handleKeyDown" @input="handleInput">
+          dark="text-$text-dark-c-1" 
+          @keydown.enter="search"
+          @keydown="handleKeyDown"
+          @input="handleInput" 
+          @keydown.down.exact="keyNext"
+          @keydown.up.exact="keyPrev">
         <div v-if="keyword.length > 0" hover="op-80 rotate-180 scale-110" i-carbon:close mx-4 cursor-pointer text-20
           op-40 transition duration-300 @click="handleCloseClick"></div>        
       </div>
