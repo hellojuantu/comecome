@@ -61,7 +61,7 @@ function handleDragEnd(e: any) {
           }"
           border="b-2 transparent"
           cursor-pointer transition-color duration-300 p-8
-          @click="handleCateClick(i)"
+          @click.stop.prevent="handleCateClick(i)"
         >
           {{ cate.name }}
         </div>
@@ -74,7 +74,7 @@ function handleDragEnd(e: any) {
       size="small"
       :focusable="false"
       secondary circle
-      @click="modalStore.showModal('add', 'cate')"
+      @click.stop.prevent="modalStore.showModal('add', 'cate')"
     >
       <template #icon>
         <div i-carbon:add />
