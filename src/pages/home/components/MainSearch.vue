@@ -33,7 +33,7 @@ function search() {
   }
   const currentSearch = searchList[currentIndex.value]
   window.open(`${currentSearch.value.url}?${currentSearch.value.key}=${keyword.value}`)
-  clearNoticeKey() 
+  clearNoticeKey()
 }
 
 function _getFavicon(search: Search) {
@@ -61,21 +61,21 @@ function handleCloseClick() {
 }
 
 function handleKeyDown(e: KeyboardEvent) {
-  const target = keyword.value.match(/^#[a-z]+/)
-  if (target && e.key === 'Tab') {
-    e.preventDefault()
-    const s = target[0].replace('#', '')
-    const index = searchList.findIndex(item => item.value.s === s)
-    if (index === -1) {
-      return
-    }
-    currentIndex.value = index
-    keyword.value = ''
-  }
+  // const target = keyword.value.match(/^#[a-z]+/)
+  // if (target && e.key === 'Tab') {
+  //   e.preventDefault()
+  //   const s = target[0].replace('#', '')
+  //   const index = searchList.findIndex(item => item.value.s === s)
+  //   if (index === -1) {
+  //     return
+  //   }
+  //   currentIndex.value = index
+  //   keyword.value = ''
+  // }
 }
 
 function handleInput(e: Event) {
-  if (keyword.value.trim().length === 0) {
+  if (!keyword.value.trim()) {
     clearNoticeKey() 
     return
   }
@@ -91,12 +91,12 @@ interface Params {
 }
 
 let requestEngApi = $_.debounce(() => {
-  if (!keyword.value) {
-    return
-  }
   const curSearch = searchList[currentIndex.value]
   searchEngine.complete(curSearch.enName, keyword.value, (params: Params) => {
     // console.log("params", params.list)
+    if (keyword.value.trim().length === 0) {
+      return
+    }
     noticeKeyList.value.splice(0, noticeKeyList.value.length || 0)
     noticeKeyList.value.push(keyword.value, ...params.list)
   })
@@ -104,27 +104,29 @@ let requestEngApi = $_.debounce(() => {
 
 function jumpSearch(i: number) {
   keyword.value = noticeKeyList.value[i]
-  search() 
+  search()
+  // noticeKeyList.value.push(keyword.value)
 }
 
 function clearNoticeKey() {
   showKeyDownSel.value = false
   noticeKeyList.value.splice(0, noticeKeyList.value.length || 0)
   selectedIndex.value = 0
+  noticeKeyList.value.push(keyword.value)
 }
 
 function keyNext(e: Event) {
   e.preventDefault()
   selectedIndex.value = (selectedIndex.value + 1) % noticeKeyList.value.length || 0
   keyword.value = noticeKeyList.value[selectedIndex.value]
-  console.log("keyNext", selectedIndex.value)
+  // console.log("keyNext", selectedIndex.value)
 }
 
 function keyPrev(e: Event) {
   e.preventDefault()
   selectedIndex.value = (selectedIndex.value - 1 + noticeKeyList.value.length) % noticeKeyList.value.length || 0
   keyword.value = noticeKeyList.value[selectedIndex.value]
-  console.log("keyPrev", selectedIndex.value)
+  // console.log("keyPrev", selectedIndex.value)
 }
 
 function handleKeyRecomend(e: Event) {
@@ -132,7 +134,7 @@ function handleKeyRecomend(e: Event) {
   if (clickedInput) {
     return
   }
-  showKeyDownSel.value = false
+  clearNoticeKey()
 }
 
 function handleHover(i: number) {
@@ -180,7 +182,7 @@ function handleHover(i: number) {
           @input="handleInput" 
           @keydown.down.exact="keyNext"
           @keydown.up.exact="keyPrev">
-        <div v-if="keyword.length > 0" hover="op-80 rotate-180 scale-110" i-carbon:close mx-4 cursor-pointer text-20
+        <div v-if="keyword?.length > 0" hover="op-80 rotate-180 scale-110" i-carbon:close mx-4 cursor-pointer text-20
           op-40 transition duration-300 @click="handleCloseClick"></div>        
       </div>
       <button flex-center gap-x-4 w-50 btn @click="search">
