@@ -181,7 +181,9 @@ function handleHover(i: number) {
           @keydown="handleKeyDown"
           @input="handleInput" 
           @keydown.down.exact="keyNext"
-          @keydown.up.exact="keyPrev">
+          @keydown.up.exact="keyPrev"
+          @keydown.ctrl.n.exact="keyNext"
+          @keydown.ctrl.p.exact="keyPrev">
         <div v-if="keyword?.length > 0" hover="op-80 rotate-180 scale-110" i-carbon:close mx-4 cursor-pointer text-20
           op-40 transition duration-300 @click="handleCloseClick"></div>        
       </div>
