@@ -19,7 +19,6 @@ defineOptions({
       <MainSearch />
       <SiteContainer />
       <MainSetting />
-      <TheFooter />
     </div>
   </TheDoc>
 </template>
