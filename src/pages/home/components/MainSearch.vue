@@ -33,6 +33,7 @@ function search() {
   }
   const currentSearch = searchList[currentIndex.value]
   window.open(`${currentSearch.value.url}?${currentSearch.value.key}=${keyword.value}`)
+  clearNoticeKey() 
 }
 
 function _getFavicon(search: Search) {
@@ -79,6 +80,7 @@ function handleInput(e: Event) {
     return
   }
   showKeyDownSel.value = true
+  selectedIndex.value = 0
   requestEngApi()
 }
 
@@ -95,28 +97,33 @@ let requestEngApi = $_.debounce(() => {
   const curSearch = searchList[currentIndex.value]
   searchEngine.complete(curSearch.enName, keyword.value, (params: Params) => {
     // console.log("params", params.list)
-    noticeKeyList.value.splice(0, noticeKeyList.value.length)
-    noticeKeyList.value.push(...params.list)
+    noticeKeyList.value.splice(0, noticeKeyList.value.length || 0)
+    noticeKeyList.value.push(keyword.value, ...params.list)
   })
 }, 100)
 
 function jumpSearch(i: number) {
-  keyword.value = noticeKeyList.value[i]
   search() 
-  clearNoticeKey() 
 }
 
 function clearNoticeKey() {
   showKeyDownSel.value = false
-  noticeKeyList.value.splice(0, noticeKeyList.value.length)
+  noticeKeyList.value.splice(0, noticeKeyList.value.length || 0)
+  selectedIndex.value = 0
 }
 
-function keyNext() {
-  console.log("keyNext")
+function keyNext(e: Event) {
+  e.preventDefault()
+  selectedIndex.value = (selectedIndex.value + 1) % noticeKeyList.value.length || 0
+  keyword.value = noticeKeyList.value[selectedIndex.value]
+  console.log("keyNext", selectedIndex.value)
 }
 
-function keyPrev() {
-  console.log("keyPrev")
+function keyPrev(e: Event) {
+  e.preventDefault()
+  selectedIndex.value = (selectedIndex.value - 1 + noticeKeyList.value.length) % noticeKeyList.value.length || 0
+  keyword.value = noticeKeyList.value[selectedIndex.value]
+  console.log("keyPrev", selectedIndex.value)
 }
 
 function handleKeyRecomend(e: Event) {
@@ -126,6 +133,11 @@ function handleKeyRecomend(e: Event) {
   }
   showKeyDownSel.value = false
 }
+
+function handleHover(i: number) {
+  console.log("hover i", i)
+  // selectedIndex.value = 
+}
 </script>
 
 <template>
@@ -134,8 +146,8 @@ function handleKeyRecomend(e: Event) {
       <div v-on-click-outside="handleKeyRecomend" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
         <!-- keys recommend -->
         <div v-show="showKeyDownSel" z-9 bg-fff l-0 t-100p dark="border-black-20 bg-$dark-main-bg-c">
-          <div v-for="(item, i) in noticeKeyList" :key="i" text-14 p-5
-            hover="bg-$site-hover-c" @click="jumpSearch(i)">
+          <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-14 p-5
+            hover="bg-$site-hover-c" @mouseover="handleHover(i + 1)" @click="jumpSearch(i + 1)" :class="{ 'bg-$site-hover-c': i + 1 === selectedIndex }">
             <div flex-left gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
               <div>{{ item }}</div>
             </div>
