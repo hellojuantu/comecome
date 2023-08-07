@@ -4,7 +4,7 @@
 
 <template>
   <div p-md>
-    <div class="DLetter" mt-xs>
+    <div class="DLetter mobile-doc" mt-xs>
       <div>
         <slot />
       </div>

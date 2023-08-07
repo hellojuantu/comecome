@@ -59,3 +59,17 @@ html.dark {
   opacity: 0.92 !important;
   filter: none !important;
 }
+
+@media screen and (max-width: 600px) {
+  .mobile-container {
+    width: 100% !important;
+  }
+
+  .mobile-doc {
+    margin-top: 0 !important;
+  }
+
+  .mobile-index {
+    margin: 0;
+  }
+}

@@ -13,7 +13,7 @@ defineOptions({
 <template>
   <!-- <MoonStarsBg v-show="isDark" /> -->
   <TheDoc dark:op-80>
-    <div my-6vh p-24 bg="$main-bg-c" dark="bg-$dark-main-bg-c">
+    <div my-6vh p-24 bg="$main-bg-c" dark="bg-$dark-main-bg-c" class="mobile-index">
       <MainHeader />
       <MainClock />
       <MainSearch />
