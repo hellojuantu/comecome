@@ -61,7 +61,7 @@ function handleDragEnd(e: any) {
           }"
           border="b-2 transparent"
           cursor-pointer transition-color duration-300 p-8
-          @mousedown.prevent="handleCateClick(i)"
+          v-on:click.native="handleCateClick(i)"
         >
           {{ cate.name }}
         </div>
@@ -74,7 +74,7 @@ function handleDragEnd(e: any) {
       size="small"
       :focusable="false"
       secondary circle
-      @mousedown.prevent="modalStore.showModal('add', 'cate')"
+      v-on:click.native="modalStore.showModal('add', 'cate')"
     >
       <template #icon>
         <div i-carbon:add />
