@@ -78,10 +78,15 @@ function resetData() {
     router.back()
   }  
   resetStore.finishCommit = () => {
-    const data = preset as CacheData
+    console.log("finishCOmmit", preset)
+    const clonedPreset = JSON.parse(JSON.stringify(preset))
+    console.log("clonedPreset", clonedPreset)
+
+    const data = clonedPreset as CacheData
     siteStore.setData(data.data)
     settingStore.setSettings(data.settings)
     toggleTheme(data.settings.theme)
+    siteStore.cateIndex = 0
   }
 }
 

@@ -24,7 +24,7 @@ export const useResetModalStore = defineStore('modal_reset', () => {
     setTimeout(() => {
       isCommit = false
       finishCommit.value()
-    }, 1000)
+    }, 100)
   }
 
   return {
