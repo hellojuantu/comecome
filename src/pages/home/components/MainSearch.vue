@@ -105,7 +105,7 @@ let requestEngApi = $_.debounce(() => {
 function jumpSearch(i: number) {
   keyword.value = noticeKeyList.value[i]
   search()
-  // noticeKeyList.value.push(keyword.value)
+  searchInputRef.value?.blur()
 }
 
 function clearNoticeKey() {
