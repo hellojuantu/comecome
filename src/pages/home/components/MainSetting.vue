@@ -119,7 +119,10 @@ function resetData() {
         :on-update-value="(enName: string) => settingStore.setSettings({ iconStyle: enName })"
       />
     </div>
-    <div mt-24 flex justify-end gap-x-24>
+    <div mt-24 flex justify-center gap-x-24>
+      <n-button type="primary" secondary @click="resetData">
+        重置数据
+      </n-button>
       <n-button type="primary" secondary @click="importData">
         导入数据
       </n-button>
@@ -128,9 +131,6 @@ function resetData() {
       </n-button>
     </div>
     <div my-24 flex-center gap-x-24>
-      <n-button size="large" type="primary" secondary @click="resetData">
-        重置
-      </n-button>
       <n-button size="large" type="primary" @click="$router.back()">
         返回
       </n-button>
