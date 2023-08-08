@@ -145,18 +145,16 @@ function handleLeave() {
   selectedIndex.value = 0
 }
 
-function handleFocus() {
+function handleFocus(e: Event) {
+  e.preventDefault()
   handleInput(new Event('input'))
 }
 
 function setActive(i: number) {
-  console.log("active")
   selectedIndex.value = i
-
 }
 
 function setInactive(i: number) {
-  console.log("Inactive")
   selectedIndex.value = 0
 }
 </script>
@@ -203,7 +201,7 @@ function setInactive(i: number) {
           @keydown.enter="search"
           @keydown="handleKeyDown"
           @input="handleInput"
-          @focus="handleFocus()"
+          @focus="handleFocus"
           @keydown.down.exact="keyNext"
           @keydown.up.exact="keyPrev"
           @keydown.ctrl.n.exact="keyNext"
