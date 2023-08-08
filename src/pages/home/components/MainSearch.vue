@@ -146,7 +146,6 @@ function handleLeave() {
 }
 
 function handleFocus(e: Event) {
-  e.preventDefault()
   handleInput(new Event('input'))
 }
 
