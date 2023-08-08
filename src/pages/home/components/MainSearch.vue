@@ -34,6 +34,7 @@ function search() {
   const currentSearch = searchList[currentIndex.value]
   window.open(`${currentSearch.value.url}?${currentSearch.value.key}=${keyword.value}`)
   clearNoticeKey()
+  searchInputRef.value?.blur()
 }
 
 function _getFavicon(search: Search) {
@@ -105,7 +106,6 @@ let requestEngApi = $_.debounce(() => {
 function jumpSearch(i: number) {
   keyword.value = noticeKeyList.value[i]
   search()
-  searchInputRef.value?.blur()
 }
 
 function clearNoticeKey() {
