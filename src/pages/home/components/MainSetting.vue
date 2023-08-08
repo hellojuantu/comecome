@@ -4,9 +4,13 @@ import type { Settings } from '@/stores/setting'
 import type { Category } from '@/stores/site'
 import type { ThemeSetting } from '@/utils'
 import { iconStyleList, searchList, themeList } from '@/utils'
+import ResetModal from './ResetModal.vue'
+import preset from '@/preset.json'
+import router from '@/router'
 
 // TODO 设置项完善
 
+const resetStore = useResetModalStore()
 const settingStore = useSettingStore()
 /* ThemeSetting */
 function renderThemeLabel(option: ThemeSetting): VNode {
@@ -66,6 +70,21 @@ function importData() {
   })
   inputElement.click()
 }
+function resetData() {
+  resetStore.title = '重置确认'
+  resetStore.content = '是否确认要重置所有设置?'
+  resetStore.resetVisible = true
+  resetStore.afterCommit = () => {
+    router.back()
+  }  
+  resetStore.finishCommit = () => {
+    const data = preset as CacheData
+    siteStore.setData(data.data)
+    settingStore.setSettings(data.settings)
+    toggleTheme(data.settings.theme)
+  }
+}
+
 </script>
 
 <template>
@@ -100,7 +119,7 @@ function importData() {
         :on-update-value="(enName: string) => settingStore.setSettings({ iconStyle: enName })"
       />
     </div>
-    <div mt-24 flex justify-end gap-x-12>
+    <div mt-24 flex justify-end gap-x-24>
       <n-button type="primary" secondary @click="importData">
         导入数据
       </n-button>
@@ -108,10 +127,14 @@ function importData() {
         导出数据
       </n-button>
     </div>
-    <div my-24 flex-center>
+    <div my-24 flex-center gap-x-24>
+      <n-button size="large" type="primary" secondary @click="resetData">
+        重置
+      </n-button>
       <n-button size="large" type="primary" @click="$router.back()">
-        完成
+        返回
       </n-button>
     </div>
   </section>
+  <ResetModal />
 </template>
