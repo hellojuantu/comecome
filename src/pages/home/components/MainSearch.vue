@@ -148,6 +148,17 @@ function handleLeave() {
 function handleFocus() {
   handleInput(new Event('input'))
 }
+
+function setActive(i: number) {
+  console.log("active")
+  selectedIndex.value = i
+
+}
+
+function setInactive(i: number) {
+  console.log("Inactive")
+  selectedIndex.value = 0
+}
 </script>
 
 <template>
@@ -159,6 +170,8 @@ function handleFocus() {
           <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-14 p-5
             @mouseover="handleHover(i + 1)"
             @click="jumpSearch(i + 1)"
+            @touchstart="setActive(i + 1)"
+            @touchend="setInactive(i + 1)"
             :class="{ 'bg-$site-hover-c': i + 1 === selectedIndex }">
             <div flex-left gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
               <div>{{ item }}</div>
