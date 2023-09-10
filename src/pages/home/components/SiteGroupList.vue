@@ -78,7 +78,7 @@ const { iconStyle } = useIconStyle()
               :component-data="{
                 tag: 'div',
                 type: 'transition-group',
-                class: 'grid grid-cols-2 gap-8 lg:grid-cols-6 md:grid-cols-3',
+                class: 'grid grid-cols-3 gap-8 lg:grid-cols-6 md:grid-cols-3',
               }"
               v-bind="draggableOptions"
               @start="handleStart"
