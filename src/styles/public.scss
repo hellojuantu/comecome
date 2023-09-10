@@ -4,20 +4,17 @@
 html {
   color: var(--text-c);
   background-color: var(--bg-c);
-  transition: background 0.8s;
 }
 html.dark {
   background-color: var(--dark-bg-c);
   color: var(--dark-text-c);
 }
-/* 隐藏标准的滚动条 */
 html::-webkit-scrollbar {
   width: 0;
 }
 body::-webkit-scrollbar {
   width: 0;
 }
-/* 隐藏 IE 和 Edge 浏览器的滚动条 */
 ::-ms-scrollbar {
   width: 0;
 }

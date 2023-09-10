@@ -6,38 +6,52 @@ export const DEFAULT_FAVICON = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cD
 const siteToUrl: Map<string, string> = new Map()
 const sites: string[] = [
   "clougence.com",
-  "github.com",
-  "notion.so",
   "jd.com",
   "taobao.com",
   "pinduoduo.com"
 ]
+const otherUrls: string[] = [
+  'github.com',
+  'coding.net',
+  '500px.com',
+  'themeforest.net'
+]
+
 sites.forEach((e: string) => {
   siteToUrl.set(e , '/site/' + e + '.svg')
 })
 
-function getDomain(url: string) {
-  const urlRegular = /[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/ // /^https?:\/\/[\d\w.]+/
-  const result = url.match(urlRegular)
-  if (!result) {
-    return ''
+otherUrls.forEach((url: string) => {
+  siteToUrl.set(url, 'https://0x3.com/icon?host=' + url)
+})
+
+function getDomainName(url: string) {
+  var domain = url.replace(/(^\w+:|^)\/\//, '')
+  domain = domain.replace(/^www\./, '')
+
+  var matches = domain.match(/([a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)/)
+
+  if (matches && matches.length > 1) {
+    return matches[1]
   }
-  // return result[0].replace(/^https?:\/\//, '') + '.png'
-  return result[0]
+
+  return null
 }
 
-
 export function getFaviconUrl(url: string) {
-  const paramsUrl = getDomain(url)
-  if (!paramsUrl) {
+  const paramsUrl = getDomainName(url)
+  if (paramsUrl == null) {
     return DEFAULT_FAVICON
   }
 
-  const optUrl = siteToUrl.get(paramsUrl)
+  if (paramsUrl.includes("clougence")) {
+    console.log("paramsUrl", paramsUrl)
+  }
 
+  const optUrl = siteToUrl.get(paramsUrl)
   if (optUrl) {
     return optUrl
   }
-
-  return FAVICON_API + getDomain(url) + '.png'
+  
+  return FAVICON_API + getDomainName(url) + '.png'
 }

@@ -3,8 +3,8 @@ import preset from '@/preset.json'
 
 export interface Settings {
   theme: string
-  search: String
-  iconStyle: String
+  search: string
+  iconStyle: string
 }
 export interface SettingItem<T> {
   name: string
