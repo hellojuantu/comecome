@@ -11,7 +11,7 @@ function getIconClass(routeName: string) {
 </script>
 
 <template>
-  <div flex justify-between py-12>
+  <div flex justify-between py-12 px="12 md:24 lg:48">
     <RouterLink to="/">
       <div text="$primary-c" flex-center text-16 style='font-weight: bold;' >
         <img w-16 src="/favicon.png" inline-block text-32 transition duration-300 hover="opacity-70">

@@ -10,20 +10,31 @@ html.dark {
   background-color: var(--dark-bg-c);
   color: var(--dark-text-c);
 }
+/* 隐藏标准的滚动条 */
+html::-webkit-scrollbar {
+  width: 0;
+}
+body::-webkit-scrollbar {
+  width: 0;
+}
+/* 隐藏 IE 和 Edge 浏览器的滚动条 */
+::-ms-scrollbar {
+  width: 0;
+}
+// ::-webkit-scrollbar {
+//   width: 12px;
+//   height: 12px;
+// }
 
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-::-webkit-scrollbar-thumb {
-  border: 4px solid transparent;
-  background-clip: padding-box;
-  background-color: #8888;
-  border-radius: 9999px;
-  &:hover {
-    background-color: #888b;
-  }
-}
+// ::-webkit-scrollbar-thumb {
+//   border: 4px solid transparent;
+//   background-clip: padding-box;
+//   background-color: #8888;
+//   border-radius: 9999px;
+//   &:hover {
+//     background-color: #888b;
+//   }
+// }
 
 /* draggable */
 // 托拖拽时 原元素样式
@@ -60,16 +71,29 @@ html.dark {
   filter: none !important;
 }
 
-@media screen and (max-width: 600px) {
-  .mobile-container {
-    width: 100% !important;
-  }
+// @media screen and (max-width: 600px) {
+//   .mobile-container {
+//     width: 100% !important;
+//   }
 
-  .mobile-doc {
-    margin-top: 0 !important;
-  }
+//   .mobile-doc {
+//     margin-top: 0 !important;
+//   }
 
-  .mobile-index {
-    margin: 0;
-  }
+//   .mobile-index {
+//     margin: 0;
+//   }
+// }
+
+.mobile-container {
+  width: 100% !important;
+}
+
+.mobile-doc {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.mobile-index {
+  margin: 0;
 }

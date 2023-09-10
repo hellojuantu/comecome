@@ -159,12 +159,12 @@ function setInactive(i: number) {
 </script>
 
 <template>
-  <div my-24 flex-center>
-    <div flex bg-gray-200 h-40 class="search" dark="bg-18181a" style="position: relative;">
+  <div my-32 flex-center>
+    <div flex bg-gray-200 h-48 class="search" dark="bg-18181a" style="position: relative;">
       <div @mouseleave="handleLeave()" v-show="showKeyDownSel" v-on-click-outside="handleKeyRecomend" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
         <!-- keys recommend -->
         <div z-9 bg-fff l-0 t-100p dark="border-grey-8 bg-18181a">
-          <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-14 p-5
+          <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-15 p-5
             @mouseover="handleHover(i + 1)"
             @click="jumpSearch(i + 1)"
             @touchstart="setActive(i + 1)"
@@ -184,7 +184,7 @@ function setInactive(i: number) {
         <!-- 搜索引擎选择 -->
         <div v-show="selectionVisible" absolute z-9 border-2 bg-fff l-0 t-100p w-200
           dark="border-black-20 bg-$dark-main-bg-c">
-          <div v-for="(item, i) in searchList" :key="i" flex cursor-pointer items-center justify-between text-14 p-5
+          <div v-for="(item, i) in searchList" :key="i" flex cursor-pointer items-center justify-between text-15 p-5
             hover="bg-$site-hover-c" @click="changeSearch(i)">
             <div flex-center gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
               <img :src="_getFavicon(item.value)" :style="iconStyle" circle h-20 w-20>
@@ -194,8 +194,8 @@ function setInactive(i: number) {
           </div>
         </div>        
       </div>      
-      <div flex items-center w-260>
-        <input ref="searchInputRef" v-model="keyword" h-full w-full bg-inherit op-80 text="14 text-$text-c-1"
+      <div flex items-center w-360>
+        <input ref="searchInputRef" v-model="keyword" h-full w-full bg-inherit op-80 text="15 text-$text-c-1"
           dark="text-$text-dark-c-1" 
           @keydown.enter="search"
           @keydown="handleKeyDown"
@@ -209,7 +209,7 @@ function setInactive(i: number) {
           op-40 transition duration-300 @click="handleCloseClick"></div>        
       </div>
       <button flex-center gap-x-4 w-50 btn @click="search">
-        <span i-carbon:search inline-block text-14 />
+        <span i-carbon:search inline-block text-15 />
       </button>      
     </div>    
   </div>

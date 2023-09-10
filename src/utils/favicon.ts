@@ -23,18 +23,9 @@ function getDomain(url: string) {
     return ''
   }
   // return result[0].replace(/^https?:\/\//, '') + '.png'
-  return `${result[0]}.png`
+  return result[0]
 }
 
-function extractDomain(url: string) {
-  if (url.includes(".png")) {
-    url = url.replace('.png', '')
-  }
-  const hostname = new URL(url).hostname;
-  const domainParts = hostname.split('.');
-  const extractedDomain = domainParts.slice(-2).join('.');
-  return extractedDomain;
-}
 
 export function getFaviconUrl(url: string) {
   const paramsUrl = getDomain(url)
@@ -42,11 +33,11 @@ export function getFaviconUrl(url: string) {
     return DEFAULT_FAVICON
   }
 
-  const optUrl = siteToUrl.get(extractDomain(url))  
+  const optUrl = siteToUrl.get(paramsUrl)
 
   if (optUrl) {
     return optUrl
   }
 
-  return FAVICON_API + getDomain(url)
+  return FAVICON_API + getDomain(url) + '.png'
 }

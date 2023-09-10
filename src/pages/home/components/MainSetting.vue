@@ -15,10 +15,10 @@ const settingStore = useSettingStore()
 /* ThemeSetting */
 function renderThemeLabel(option: ThemeSetting): VNode {
   const currentTheme = themeList.find(item => item.enName === option.enName)!
-  const bgColor = currentTheme!.value.bgC
+  const buttonColor = currentTheme!.value.buttonC
   return h('div', { class: 'flex items-center gap-x-8' },
     [
-      h('div', { class: 'w-16 h-16 circle border-1 border-fff', style: { backgroundColor: bgColor } }),
+      h('div', { class: 'w-16 h-16 circle border-1 border-fff', style: { backgroundColor: buttonColor } }),
       h('div', option.name),
     ],
   )
@@ -78,9 +78,9 @@ function resetData() {
     router.back()
   }  
   resetStore.finishCommit = () => {
-    console.log("finishCOmmit", preset)
+    // console.log("finishCOmmit", preset)
     const clonedPreset = JSON.parse(JSON.stringify(preset))
-    console.log("clonedPreset", clonedPreset)
+    // console.log("clonedPreset", clonedPreset)
 
     const data = clonedPreset as CacheData
     siteStore.setData(data.data)
@@ -93,10 +93,10 @@ function resetData() {
 </script>
 
 <template>
-  <section v-if="settingStore.isSetting" p-24>
-    <div my-16 text="16 $primary-dark-c" italic>
+  <section v-if="settingStore.isSetting" px="12 md:24 lg:48" mt-10>
+    <!-- <div my-16 text="16 $primary-dark-c" italic>
       设置
-    </div>
+    </div> -->
     <div flex flex-wrap justify-between gap-12>
       <SettingSelection
         v-model="settingStore.settings.theme"

@@ -8,14 +8,16 @@ const siteStore = useSiteStore()
 const route = useRoute()
 
 function handleSiteClick(url: string, groupIndex: number, siteIndex: number) {
-  if (route.name === 'setting')
+  if (route.name === 'setting') {
     modalStore.showModal('update', 'site', groupIndex, siteIndex)
-  else
+  } else {
     window.open(url, '_blank')
+  }
 }
 function handleGroupClick(groupIndex: number) {
-  if (route.name === 'setting')
+  if (route.name === 'setting') {
     modalStore.showModal('update', 'group', groupIndex)
+  }
 }
 
 const addGroupVisible = computed(() => route.name === 'setting' && siteStore.data.length > 0)
