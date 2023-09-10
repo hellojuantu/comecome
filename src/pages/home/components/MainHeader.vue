@@ -4,8 +4,6 @@ import { RouterLink } from 'vue-router'
 const route = useRoute()
 const settingsActived = ref(false)
 
-console.log(route.path)
-debugger
 if (route.path == '/setting') {
   settingsActived.value = true
 } else {
