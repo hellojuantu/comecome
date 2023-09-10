@@ -209,7 +209,7 @@ function setInactive(i: number) {
           op-40 transition duration-300 @click="handleCloseClick"></div>        
       </div>
       <button flex-center gap-x-4 w-50 btn @click="search">
-        <span i-carbon:search inline-block text-15 />
+        <span i-carbon:search inline-block text-15 w-50/>
       </button>      
     </div>    
   </div>
