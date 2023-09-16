@@ -41,7 +41,7 @@ function handleDragEnd(e: any) {
 <template>
   <section flex-center text-14>
     <draggable
-      class="flex gap-x-12"
+      class="flex gap-x-12 "
       :list="siteStore.data"
       item-key="id"
       :delay="1"
@@ -53,6 +53,7 @@ function handleDragEnd(e: any) {
       v-bind="draggableOptions"
       @start="handleStart"
       @end="handleDragEnd"
+      style="overflow: scroll; white-space: nowrap;"
     >
       <template #item="{ element: cate, index: i }: { element: Category, index: number }">
         <div
@@ -64,6 +65,7 @@ function handleDragEnd(e: any) {
           border="b-2 transparent"
           cursor-pointer transition-color duration-300 p-8
           v-on:click.native="handleCateClick(i)"
+          style="text-align: center;"
         >
           {{ cate.name }}
         </div>

@@ -3,10 +3,11 @@ import SettingSelection from './SettingSelection.vue'
 import type { Settings } from '@/stores/setting'
 import type { Category } from '@/stores/site'
 import type { ThemeSetting } from '@/utils'
-import { iconStyleList, searchList, themeList } from '@/utils'
+import { iconStyleList, searchList, themeList, siteStyleList } from '@/utils'
 import ResetModal from './ResetModal.vue'
 import preset from '@/preset.json'
 import router from '@/router'
+import { toggleSiteSytle } from '@/composables/dark'
 
 // TODO 设置项完善
 
@@ -62,6 +63,7 @@ function importData() {
         siteStore.setData(data.data)
         settingStore.setSettings(data.settings)
         toggleTheme(data.settings.theme)
+        toggleSiteSytle()
       }
       catch (error) {
         window.$notification.error({ content: '请导入合法的数据文件', duration: 3000 })
@@ -86,6 +88,7 @@ function resetData() {
     siteStore.setData(data.data)
     settingStore.setSettings(data.settings)
     toggleTheme(data.settings.theme)
+    toggleSiteSytle()
     siteStore.cateIndex = 0
   }
 }
@@ -94,13 +97,10 @@ function resetData() {
 
 <template>
   <section v-if="settingStore.isSetting" px="12 md:24 lg:48" mt-10>
-    <!-- <div my-16 text="16 $primary-dark-c" italic>
-      设置
-    </div> -->
-    <div flex flex-wrap justify-between gap-12>
+    <div grid grid-cols-2 gap-24 lg:grid-cols-2 md:grid-cols-2>
       <SettingSelection
         v-model="settingStore.settings.theme"
-        title="主题"
+        title="风格样式"
         :options="themeList"
         :render-label="renderThemeLabel"
         label-field="name"
@@ -117,26 +117,37 @@ function resetData() {
       />
       <SettingSelection
         v-model="settingStore.settings.iconStyle"
-        title="图标风格"
+        title="图标颜色"
         :options="iconStyleList"
         label-field="name"
         value-field="enName"
         :on-update-value="(enName: string) => settingStore.setSettings({ iconStyle: enName })"
       />
+      <SettingSelection
+        v-model="settingStore.settings.siteStyle"
+        title="主题模式"
+        :options="siteStyleList"
+        label-field="name"
+        value-field="enName"
+        :on-update-value="(enName: string) => { 
+          settingStore.setSettings({ siteStyle: enName }) 
+          toggleSiteSytle()
+        }"
+      />
     </div>
     <div mt-24 flex justify-center gap-x-24>
-      <n-button type="primary" secondary @click="resetData">
+      <n-button @click="resetData">
         重置数据
       </n-button>
-      <n-button type="primary" secondary @click="importData">
+      <n-button @click="importData">
         导入数据
       </n-button>
-      <n-button type="primary" @click="exportData">
+      <n-button @click="exportData">
         导出数据
       </n-button>
     </div>
     <div my-24 flex-center gap-x-24>
-      <n-button size="large" type="primary" @click="$router.back()">
+      <n-button size="large" @click="$router.back()">
         返回
       </n-button>
     </div>

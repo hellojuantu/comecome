@@ -118,6 +118,7 @@ declare global {
   const toRefs: typeof import('vue')['toRefs']
   const toValue: typeof import('vue')['toValue']
   const toggleDark: typeof import('./composables/dark')['toggleDark']
+  const toggleSiteSytle: typeof import('./composables/dark')['toggleSiteSytle']
   const toggleTheme: typeof import('./composables/theme')['toggleTheme']
   const triggerRef: typeof import('vue')['triggerRef']
   const tryOnBeforeMount: typeof import('@vueuse/core')['tryOnBeforeMount']
@@ -253,6 +254,7 @@ declare global {
   const useSettingStore: typeof import('./stores/setting')['useSettingStore']
   const useShare: typeof import('@vueuse/core')['useShare']
   const useSiteStore: typeof import('./stores/site')['useSiteStore']
+  const useSiteStyle: typeof import('./composables/dark')['useSiteStyle']
   const useSlots: typeof import('vue')['useSlots']
   const useSorted: typeof import('@vueuse/core')['useSorted']
   const useSpeechRecognition: typeof import('@vueuse/core')['useSpeechRecognition']
@@ -434,6 +436,7 @@ declare module 'vue' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly toggleDark: UnwrapRef<typeof import('./composables/dark')['toggleDark']>
+    readonly toggleSiteSytle: UnwrapRef<typeof import('./composables/dark')['toggleSiteSytle']>
     readonly toggleTheme: UnwrapRef<typeof import('./composables/theme')['toggleTheme']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly tryOnBeforeMount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeMount']>
@@ -569,6 +572,7 @@ declare module 'vue' {
     readonly useSettingStore: UnwrapRef<typeof import('./stores/setting')['useSettingStore']>
     readonly useShare: UnwrapRef<typeof import('@vueuse/core')['useShare']>
     readonly useSiteStore: UnwrapRef<typeof import('./stores/site')['useSiteStore']>
+    readonly useSiteStyle: UnwrapRef<typeof import('./composables/dark')['useSiteStyle']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useSorted: UnwrapRef<typeof import('@vueuse/core')['useSorted']>
     readonly useSpeechRecognition: UnwrapRef<typeof import('@vueuse/core')['useSpeechRecognition']>
@@ -744,6 +748,7 @@ declare module '@vue/runtime-core' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly toggleDark: UnwrapRef<typeof import('./composables/dark')['toggleDark']>
+    readonly toggleSiteSytle: UnwrapRef<typeof import('./composables/dark')['toggleSiteSytle']>
     readonly toggleTheme: UnwrapRef<typeof import('./composables/theme')['toggleTheme']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly tryOnBeforeMount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeMount']>
@@ -879,6 +884,7 @@ declare module '@vue/runtime-core' {
     readonly useSettingStore: UnwrapRef<typeof import('./stores/setting')['useSettingStore']>
     readonly useShare: UnwrapRef<typeof import('@vueuse/core')['useShare']>
     readonly useSiteStore: UnwrapRef<typeof import('./stores/site')['useSiteStore']>
+    readonly useSiteStyle: UnwrapRef<typeof import('./composables/dark')['useSiteStyle']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useSorted: UnwrapRef<typeof import('@vueuse/core')['useSorted']>
     readonly useSpeechRecognition: UnwrapRef<typeof import('@vueuse/core')['useSpeechRecognition']>

@@ -1,10 +1,11 @@
-import { iconStyleList, searchList, themeList } from '@/utils'
+import { iconStyleList, searchList, themeList, siteStyleList } from '@/utils'
 import preset from '@/preset.json'
 
 export interface Settings {
   theme: string
   search: string
   iconStyle: string
+  siteStyle: string
 }
 export interface SettingItem<T> {
   name: string
@@ -21,6 +22,7 @@ export const settingData: { [K in SettingKey]: SettingItem<any>[] } = {
   theme: themeList,
   search: searchList,
   iconStyle: iconStyleList,
+  siteStyle: siteStyleList
 }
 
 export const useSettingStore = defineStore('theme', () => {

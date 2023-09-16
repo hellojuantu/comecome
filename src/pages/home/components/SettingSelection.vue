@@ -24,8 +24,8 @@ const modelValue = computed({
 </script>
 
 <template>
-  <div w-full flex items-center justify-between>
-    <div text="14" inline-block overflow-hidden w-20p w-80>
+  <div>
+    <div text="14" overflow-hidden w-20p w-90 mb-10>
       {{ title }}
     </div>
     <n-select

@@ -4,18 +4,13 @@ import MainClock from './components/MainClock.vue'
 import MainSearch from './components/MainSearch.vue'
 import SiteContainer from './components/SiteContainer.vue'
 import MainSetting from './components/MainSetting.vue'
-import { usePreferredColorScheme } from '@vueuse/core'
+import { toggleSiteSytle } from '@/composables/dark'
 
 defineOptions({
   name: 'HomePage',
 })
 
-const colorScheme = usePreferredColorScheme()
-if (colorScheme.value == "light") {
-  isDark.value = false
-} else if (colorScheme.value === 'dark') {
-  isDark.value = true
-}
+toggleSiteSytle()
 
 </script>
 

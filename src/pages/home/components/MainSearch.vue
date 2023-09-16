@@ -176,7 +176,7 @@ function setInactive(i: number) {
           </div>
         </div>
       </div>
-      <div v-on-click-outside="() => selectionVisible = false" relative flex-center w-58 class="search-sel">
+      <div v-on-click-outside="() => selectionVisible = false" relative flex-center w-44 class="search-sel">
         <div class="search-img" style="width: inherit; height: inherit;" @click="toggleSelection">
           <img :src="_getFavicon(searchList[currentIndex].value)" :style="iconStyle" cursor-pointer circle h-26 w-26
             style="opacity: 0.8;filter: saturate(64%);margin: auto;position: relative;top: 50%;transform: translateY(-50%);">
@@ -194,7 +194,7 @@ function setInactive(i: number) {
           </div>
         </div>        
       </div>      
-      <div flex items-center w-360>
+      <div flex items-center w-320>
         <input ref="searchInputRef" v-model="keyword" h-full w-full bg-inherit op-80 text="15 text-$text-c-1"
           dark="text-$text-dark-c-1" 
           @keydown.enter="search"
@@ -204,13 +204,15 @@ function setInactive(i: number) {
           @keydown.down.exact="keyNext"
           @keydown.up.exact="keyPrev"
           @keydown.ctrl.n.exact="keyNext"
-          @keydown.ctrl.p.exact="keyPrev">
-        <div v-if="keyword?.length > 0" hover="op-80 rotate-180 scale-110" i-carbon:close mx-4 cursor-pointer text-20
-          op-40 transition duration-300 @click="handleCloseClick"></div>        
-      </div>
-      <button flex-center gap-x-4 w-58 btn @click="search">
-        <span i-carbon:search inline-block text-15 w-58/>
-      </button>      
+          @keydown.ctrl.p.exact="keyPrev">       
+      </div>      
+      <div v-if="keyword?.length > 0" flex-center gap-x-4 w-44>       
+        <div hover="op-80 rotate-180 scale-110" i-carbon:close mx-0 cursor-pointer text-20
+            op-40 transition duration-300 @click="handleCloseClick"></div>     
+      </div> 
+      <div v-if="keyword?.length == 0" flex-center gap-x-4 w-44 cursor-pointer @click="search" class="search-img" style="background: transparent;">
+        <span i-carbon:search inline-block text-15 w-50 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />      
+      </div> 
     </div>    
   </div>
 </template>
