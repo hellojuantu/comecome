@@ -160,7 +160,7 @@ function setInactive(i: number) {
 
 <template>
   <div my-32 flex-center>
-    <div flex bg-gray-200 h-48 class="search" dark="bg-18181a" style="position: relative;">
+    <div flex bg-gray-200 h-44 class="search" dark="bg-18181a" style="position: relative;">
       <div @mouseleave="handleLeave()" v-show="showKeyDownSel" v-on-click-outside="handleKeyRecomend" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
         <!-- keys recommend -->
         <div z-9 bg-fff l-0 t-100p dark="border-grey-8 bg-18181a">
@@ -176,7 +176,7 @@ function setInactive(i: number) {
           </div>
         </div>
       </div>
-      <div v-on-click-outside="() => selectionVisible = false" relative flex-center w-50 class="search-sel">
+      <div v-on-click-outside="() => selectionVisible = false" relative flex-center w-58 class="search-sel">
         <div class="search-img" style="width: inherit; height: inherit;" @click="toggleSelection">
           <img :src="_getFavicon(searchList[currentIndex].value)" :style="iconStyle" cursor-pointer circle h-26 w-26
             style="opacity: 0.8;filter: saturate(64%);margin: auto;position: relative;top: 50%;transform: translateY(-50%);">
@@ -208,8 +208,8 @@ function setInactive(i: number) {
         <div v-if="keyword?.length > 0" hover="op-80 rotate-180 scale-110" i-carbon:close mx-4 cursor-pointer text-20
           op-40 transition duration-300 @click="handleCloseClick"></div>        
       </div>
-      <button flex-center gap-x-4 w-50 btn @click="search">
-        <span i-carbon:search inline-block text-15 w-50/>
+      <button flex-center gap-x-4 w-58 btn @click="search">
+        <span i-carbon:search inline-block text-15 w-58/>
       </button>      
     </div>    
   </div>
