@@ -88,7 +88,7 @@ function resetData() {
   resetStore.resetVisible = true
   resetStore.afterCommit = () => {
     router.back()
-  }  
+  }
   resetStore.finishCommit = () => {
     // console.log("finishCOmmit", preset)
     const clonedPreset = JSON.parse(JSON.stringify(preset))
@@ -106,7 +106,7 @@ function resetData() {
 </script>
 
 <template>
-  <section v-if="settingStore.isSetting" px="12 md:60 lg:120" mt-10>
+  <section v-if="settingStore.isSetting" px="md:60 lg:120" mt-10>
     <div grid grid-cols-2 gap-24 lg:grid-cols-2 md:grid-cols-2>
       <SettingSelection
         v-model="settingStore.settings.theme"
@@ -142,8 +142,8 @@ function resetData() {
         :render-label="renderColor"
         label-field="name"
         value-field="enName"
-        :on-update-value="(enName: string) => { 
-          settingStore.setSettings({ siteStyle: enName }) 
+        :on-update-value="(enName: string) => {
+          settingStore.setSettings({ siteStyle: enName })
           toggleSiteSytle()
         }"
       />
@@ -160,7 +160,7 @@ function resetData() {
       </n-button>
     </div>
     <div my-24 flex-center gap-x-24>
-      <n-button size="large" @click="$router.back()">
+      <n-button type="primary" text-color='#ffffff' size="large" @click="$router.back()">
         返回
       </n-button>
     </div>

@@ -39,7 +39,7 @@ const modalStore = useModalStore()
         <n-button v-if="modalStore.action === 'update'" type="error" @click="modalStore.handleDelete">
           删除
         </n-button>
-        <n-button type="primary" @click="modalStore.handleCommit">
+        <n-button type="primary" text-color='#ffffff' @click="modalStore.handleCommit">
           确认
         </n-button>
       </div>

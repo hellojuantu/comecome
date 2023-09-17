@@ -21,7 +21,7 @@ const resetModal = useResetModalStore()
         <n-button @click="resetModal.handleCancel">
           取消
         </n-button>
-        <n-button type="primary" @click="resetModal.handleCommit">
+        <n-button type="primary" text-color='#ffffff' @click="resetModal.handleCommit">
           确认
         </n-button>
       </div>
