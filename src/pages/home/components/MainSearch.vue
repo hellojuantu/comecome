@@ -207,11 +207,11 @@ function setInactive(i: number) {
           @keydown.ctrl.p.exact="keyPrev">       
       </div>      
       <div v-if="keyword?.length > 0" flex-center gap-x-4 w-44>       
-        <div hover="op-80 rotate-180 scale-110" i-carbon:close mx-0 cursor-pointer text-20
+        <div hover="op-80 rotate-180 scale-110" i-carbon:close mx-0 cursor-pointer text-20 w-44
             op-40 transition duration-300 @click="handleCloseClick"></div>     
       </div> 
       <div v-if="keyword?.length == 0" flex-center gap-x-4 w-44 cursor-pointer @click="search" class="search-img" style="background: transparent;">
-        <span i-carbon:search inline-block text-15 w-24 h-20 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />      
+        <span i-carbon:search inline-block text-15 w-44 h-20 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />      
       </div> 
     </div>    
   </div>
