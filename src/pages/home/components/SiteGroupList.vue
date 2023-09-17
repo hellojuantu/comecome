@@ -46,29 +46,19 @@ const { iconStyle } = useIconStyle()
       @end="handleEnd"
     >
       <template #item="{ element: group, index: i }: { element: Group, index: number }">
-        <div :class="{ 'group--setting': settingStore.isSetting }">
+        <div :class="{ 'group--setting': settingStore.isSetting }" flex style="align-items: center; margin-bottom: 10rem;">
           <!-- Group header -->
-          <div
-            :class="{ 'cursor-pointer ': settingStore.isSetting }"
-            my-8
-            @click="handleGroupClick(i)"
-          >
-            <div
-              class="group__handle"
-              :class="{
-                'group__header--setting mb-12': settingStore.isSetting,
+          <div flex style="max-width: 10%; overflow: hidden; align-items: center; flex: 0 0 10%;">
+            <span class="group__handle"  @click="handleGroupClick(i)" :class="{
+                'cursor-pointer ': settingStore.isSetting,
+                'group__header--setting': settingStore.isSetting,
                 'hover:bg-$site-hover-c': settingStore.isSetting && !settingStore.isDragging,
-              }"
-              flex items-center justify-between px-12 py-4
-            >
-              <span class="group__name" :class="{ 'cursor-pointer': settingStore.isSetting }" px-12 py-4>
-                {{ group.name }}
-              </span>
-              <div />
-            </div>
+              }" px-0 py-4 style="white-space: nowrap; color: #888;">
+              {{ group.name }}
+            </span>
           </div>
           <!-- Group content -->
-          <div>
+          <div flex style="flex: 0 0 90%; max-width: 90%;">
             <draggable
               :list="siteStore.data[siteStore.cateIndex].groupList[i].siteList"
               item-key="id"
@@ -85,6 +75,8 @@ const { iconStyle } = useIconStyle()
               @end="handleEnd"
               :delay="1"
               :fallbackTolerance="3"
+              flex
+              style="flex: 0 0 100%;"
             >
               <template #item="{ element: site, index }: { element: Site, index: number }">
                 <div>
@@ -93,8 +85,9 @@ const { iconStyle } = useIconStyle()
                     class="site__handle"
                     :class="{ 'site--setting': settingStore.isSetting, 'hover:bg-$site-hover-c': !settingStore.isDragging }"
                     :href="site.url" target="_blank"
-                    inline-flex cursor-pointer items-center gap-x-8 px-12 py-8 max-w-100p
+                    inline-flex cursor-pointer items-center gap-x-4 px-8 py-8 max-w-100p
                     @click="handleSiteClick(site.url, i, index)"
+                    style="margin: 0 2px;"
                   >
                     <img
                       :src="site.favicon || getFaviconUrl(site.url)"
@@ -107,7 +100,7 @@ const { iconStyle } = useIconStyle()
                 </div>
               </template>
               <template #footer>
-                <div v-if="settingStore.isSetting" min-h-38>
+                <div v-if="settingStore.isSetting && siteStore.data[siteStore.cateIndex].groupList[i].siteList.length < 6" min-h-38>
                   <n-button class="h-full" type="primary" secondary :focusable="false" @click="modalStore.showModal('add', 'site', i)">
                     <template #icon>
                       <div i-carbon:add />
@@ -139,7 +132,7 @@ const { iconStyle } = useIconStyle()
   position: relative;
   &::before {
     content: '';
-    width: 4px;
+    width: 3px;
     height: 72%;
     position: absolute;
     left: 0;

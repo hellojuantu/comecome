@@ -79,29 +79,30 @@ body::-webkit-scrollbar {
   }
 }
 
-// @media screen and (max-width: 600px) {
-//   .mobile-container {
-//     width: 100% !important;
-//   }
+@media screen and (max-width: 600px) {
+  .mobile-container {
+    width: 100% !important;
+  }
 
-//   .mobile-doc {
-//     margin-top: 0 !important;
-//   }
+  .mobile-doc {
+    width: 100% !important;
+    margin: 0 !important;
+  }
 
-//   .mobile-index {
-//     margin: 0;
-//   }
+  .mobile-index {
+    margin: 0;
+  }
+}
+
+// .mobile-container {
+//   width: 100% !important;
 // }
 
-.mobile-container {
-  width: 100% !important;
-}
+// .mobile-doc {
+//   width: 100% !important;
+//   margin: 0 !important;
+// }
 
-.mobile-doc {
-  width: 100% !important;
-  margin: 0 !important;
-}
-
-.mobile-index {
-  margin: 0;
-}
+// .mobile-index {
+//   margin: 0;
+// }
