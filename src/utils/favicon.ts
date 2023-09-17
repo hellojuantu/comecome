@@ -44,10 +44,6 @@ export function getFaviconUrl(url: string) {
     return DEFAULT_FAVICON
   }
 
-  if (paramsUrl.includes("clougence")) {
-    console.log("paramsUrl", paramsUrl)
-  }
-
   const optUrl = siteToUrl.get(paramsUrl)
   if (optUrl) {
     return optUrl

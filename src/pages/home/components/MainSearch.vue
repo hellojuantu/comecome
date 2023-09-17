@@ -211,7 +211,7 @@ function setInactive(i: number) {
             op-40 transition duration-300 @click="handleCloseClick"></div>     
       </div> 
       <div v-if="keyword?.length == 0" flex-center gap-x-4 w-44 cursor-pointer @click="search" class="search-img" style="background: transparent;">
-        <span i-carbon:search inline-block text-15 w-50 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />      
+        <span i-carbon:search inline-block text-15 w-24 h-20 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />      
       </div> 
     </div>    
   </div>

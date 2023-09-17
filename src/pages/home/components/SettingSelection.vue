@@ -32,6 +32,7 @@ const modelValue = computed({
       v-model:value="modelValue"
       :options="options"
       v-bind="$attrs"
+      :show-checkmark="false"
     />
   </div>
 </template>

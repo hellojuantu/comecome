@@ -17,10 +17,20 @@ const settingStore = useSettingStore()
 function renderThemeLabel(option: ThemeSetting): VNode {
   const currentTheme = themeList.find(item => item.enName === option.enName)!
   const buttonColor = currentTheme!.value.buttonC
+  const darkConfig = isDark.value ? { style: { color: '#ffffff' } } : {}
   return h('div', { class: 'flex items-center gap-x-8' },
     [
       h('div', { class: 'w-16 h-16 circle border-1 border-fff', style: { backgroundColor: buttonColor } }),
-      h('div', option.name),
+      h('div', darkConfig , option.name),
+    ],
+  )
+}
+/* render color */
+function renderColor(option: any): VNode {
+  const darkConfig = isDark.value ? { style: { color: '#ffffff' } } : {}
+  return h('div', { class: 'flex items-center gap-x-8' },
+    [
+      h('div', darkConfig, option.name),
     ],
   )
 }
@@ -111,6 +121,7 @@ function resetData() {
         v-model="settingStore.settings.search"
         title="搜索引擎"
         :options="searchList"
+        :render-label="renderColor"
         label-field="name"
         value-field="enName"
         :on-update-value="(enName: string) => settingStore.setSettings({ search: enName })"
@@ -119,6 +130,7 @@ function resetData() {
         v-model="settingStore.settings.iconStyle"
         title="图标颜色"
         :options="iconStyleList"
+        :render-label="renderColor"
         label-field="name"
         value-field="enName"
         :on-update-value="(enName: string) => settingStore.setSettings({ iconStyle: enName })"
@@ -127,6 +139,7 @@ function resetData() {
         v-model="settingStore.settings.siteStyle"
         title="主题模式"
         :options="siteStyleList"
+        :render-label="renderColor"
         label-field="name"
         value-field="enName"
         :on-update-value="(enName: string) => { 
