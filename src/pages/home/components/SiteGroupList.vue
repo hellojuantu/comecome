@@ -48,7 +48,7 @@ const { iconStyle } = useIconStyle()
       <template #item="{ element: group, index: i }: { element: Group, index: number }">
         <div :class="{ 'group--setting': settingStore.isSetting }" flex style="align-items: center; margin-bottom: 10rem;">
           <!-- Group header -->
-          <div flex style="max-width: 10%; overflow: hidden; align-items: center; flex: 0 0 10%;">
+          <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
                 'cursor-pointer ': settingStore.isSetting,
                 'group__header--setting': settingStore.isSetting,
@@ -58,7 +58,7 @@ const { iconStyle } = useIconStyle()
             </span>
           </div>
           <!-- Group content -->
-          <div flex style="flex: 0 0 90%; max-width: 90%;">
+          <div flex class="group__content--all">
             <draggable
               :list="siteStore.data[siteStore.cateIndex].groupList[i].siteList"
               item-key="id"
@@ -145,10 +145,36 @@ const { iconStyle } = useIconStyle()
 .group--setting {
   margin-bottom: 12px;
   padding: 12px 6px;
-  background: var(--setting-group-bg-c);
+  //background: var(--setting-group-bg-c);
 }
 .group__header--setting {
   background-color: var(--category-c);
   margin: 0 2px;
+  padding: 4px;
+  font-size: 13px;
+}
+
+.group__header--all {
+  max-width: 10%;
+  overflow: hidden;
+  align-items: center;
+  flex: 0 0 10%;
+}
+
+.group__content--all {
+  flex: 0 0 90%;
+  max-width: 90%;
+}
+
+@media screen and (max-width: 600px) {
+  .group__header--all {
+    max-width: 15%;
+    flex: 0 0 15%;
+  }
+
+  .group__content--all {
+    flex: 0 0 85%;
+    max-width: 85%;
+  }
 }
 </style>
