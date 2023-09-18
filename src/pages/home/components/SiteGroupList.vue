@@ -46,7 +46,7 @@ const { iconStyle } = useIconStyle()
       @end="handleEnd"
     >
       <template #item="{ element: group, index: i }: { element: Group, index: number }">
-        <div :class="{ 'group--setting': settingStore.isSetting }" flex style="align-items: center; margin-bottom: 10rem;">
+        <div class="group__header--mobile" :class="{ 'group--setting': settingStore.isSetting }" flex style="align-items: center;">
           <!-- Group header -->
           <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
@@ -68,7 +68,7 @@ const { iconStyle } = useIconStyle()
               :component-data="{
                 tag: 'div',
                 type: 'transition-group',
-                class: 'grid grid-cols-3 gap-8 lg:grid-cols-6 md:grid-cols-3',
+                class: 'grid grid-cols-3 gap-8 lg:grid-cols-6 md:grid-cols-6',
               }"
               v-bind="draggableOptions"
               @start="handleStart"
@@ -143,7 +143,7 @@ const { iconStyle } = useIconStyle()
   }
 }
 .group--setting {
-  margin-bottom: 12px;
+  margin-bottom: 12px !important;
   padding: 12px 6px;
   //background: var(--setting-group-bg-c);
 }
@@ -166,6 +166,10 @@ const { iconStyle } = useIconStyle()
   max-width: 90%;
 }
 
+.group__header--mobile {
+  margin-bottom: 10rem;
+}
+
 @media screen and (max-width: 600px) {
   .group__header--all {
     max-width: 15%;
@@ -175,6 +179,10 @@ const { iconStyle } = useIconStyle()
   .group__content--all {
     flex: 0 0 85%;
     max-width: 85%;
+  }
+
+  .group__header--mobile {
+    margin-bottom: 12px;
   }
 }
 </style>

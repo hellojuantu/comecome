@@ -65,7 +65,7 @@ function handleDragEnd(e: any) {
             'site--select': siteStore.cateIndex === i && settingStore.isSetting
           }"
           border="b-2 transparent"
-          cursor-pointer transition-color duration-300 p-8
+          cursor-pointer transition-color duration-300 p-4
           v-on:click.native="handleCateClick(i)"
           style="text-align: center;"
         >
@@ -79,7 +79,7 @@ function handleDragEnd(e: any) {
       type="primary"
       size="small"
       :focusable="false"
-      secondary circle
+      secondary
       v-on:click.native="modalStore.showModal('add', 'cate')"
     >
       <template #icon>
