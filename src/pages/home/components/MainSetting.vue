@@ -164,7 +164,7 @@ function resetData() {
         导出数据
       </n-button>
     </div>
-    <div my-24 flex-center gap-x-24>
+    <div my-24 mb-48 flex-center gap-x-24>
       <n-button type="primary" text-color='#ffffff' size="large" @click="$router.back()">
         返回
       </n-button>
