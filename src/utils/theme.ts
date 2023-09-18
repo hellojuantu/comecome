@@ -10,6 +10,7 @@ export interface Theme {
   bgC: string
   mainBgC: string
   buttonC: string
+  categoryC: string
 }
 
 export type ThemeSetting = SettingItem<Theme>
@@ -27,7 +28,8 @@ export const themeList: ThemeSetting[] = [
       settingGroupBgC: '#87a8a422', // bgC + 22
       bgC: '#f3f4f6',
       mainBgC: '#f3f4f6',
-      buttonC: '#87a8a4'
+      buttonC: '#87a8a4',
+      categoryC: 'rgba(13, 148, 136, 0.16)'
     },
   },
   {
@@ -42,7 +44,8 @@ export const themeList: ThemeSetting[] = [
       settingGroupBgC: '#0A4D6822',
       bgC: '#f3f4f6',
       mainBgC: '#f3f4f6',
-      buttonC: '#0A4D68'
+      buttonC: '#0A4D68',
+      categoryC: 'rgba(20, 108, 148, 0.16)'
     },
   },
   {
@@ -57,7 +60,8 @@ export const themeList: ThemeSetting[] = [
       settingGroupBgC: '#BF927022',
       bgC: '#f3f4f6',
       mainBgC: '#f3f4f6',
-      buttonC: '#BF9270'
+      buttonC: '#BF9270',
+      categoryC: 'rgba(188, 108, 37, 0.16)'
     },
   },
   {
@@ -65,14 +69,15 @@ export const themeList: ThemeSetting[] = [
     enName: 'MoonWhite',
     value: {
       primaryC: '#555555',
-      primaryLightC: '#777777 ',
+      primaryLightC: '#777777',
       primaryDarkC: '#333333',
       siteHoverC: '#77777722',
       settingBorderC: '#333333aa',
       settingGroupBgC: '#77777730',
       bgC: '#f3f4f6',
       mainBgC: '#f3f4f6',
-      buttonC: '#E7E6E1'
+      buttonC: '#E7E6E1',
+      categoryC: 'rgba(85, 85, 85, 0.16)'
     },
   },
 ]

@@ -61,6 +61,7 @@ function handleDragEnd(e: any) {
           :class="{
             'border-$primary-c text-$primary-c': siteStore.cateIndex === i,
             'hover:text-$primary-c': !settingStore.isSetting,
+            'site--setting': settingStore.isSetting,
           }"
           border="b-2 transparent"
           cursor-pointer transition-color duration-300 p-8
@@ -86,3 +87,9 @@ function handleDragEnd(e: any) {
     </n-button>
   </section>
 </template>
+
+<style lang="scss" scoped>
+.site--setting {
+  border: 1px dashed var(--setting-border-c);
+}
+</style>

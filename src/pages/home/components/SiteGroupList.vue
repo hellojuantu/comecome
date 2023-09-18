@@ -100,7 +100,7 @@ const { iconStyle } = useIconStyle()
                 </div>
               </template>
               <template #footer>
-                <div v-if="settingStore.isSetting" min-h-38>
+                <div v-if="settingStore.isSetting && siteStore.data[siteStore.cateIndex].groupList[i].siteList.length < 6" min-h-38>
                   <n-button class="h-full" type="primary" secondary :focusable="false" @click="modalStore.showModal('add', 'site', i)">
                     <template #icon>
                       <div i-carbon:add />
@@ -148,6 +148,7 @@ const { iconStyle } = useIconStyle()
   background: var(--setting-group-bg-c);
 }
 .group__header--setting {
-  border: 1px dashed var(--setting-border-c);
+  background-color: var(--category-c);
+  margin: 0 2px;
 }
 </style>
