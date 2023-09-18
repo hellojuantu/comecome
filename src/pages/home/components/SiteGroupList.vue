@@ -128,6 +128,7 @@ const { iconStyle } = useIconStyle()
 .site--setting {
   border: 1px dashed var(--setting-border-c);
 }
+
 .group__name {
   position: relative;
   &::before {
@@ -142,10 +143,12 @@ const { iconStyle } = useIconStyle()
     border-radius: 2px;
   }
 }
+
 .group--setting {
   margin-bottom: 12px !important;
   padding: 12px 6px;
 }
+
 .group__header--setting {
   background-color: var(--category-c);
   margin: 0 2px;

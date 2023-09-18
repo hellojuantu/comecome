@@ -9,10 +9,9 @@ import preset from '@/preset.json'
 import router from '@/router'
 import { toggleSiteSytle } from '@/composables/dark'
 
-// TODO 设置项完善
-
 const resetStore = useResetModalStore()
 const settingStore = useSettingStore()
+
 /* ThemeSetting */
 function renderThemeLabel(option: ThemeSetting): VNode {
   const currentTheme = themeList.find(item => item.enName === option.enName)!
@@ -25,6 +24,7 @@ function renderThemeLabel(option: ThemeSetting): VNode {
     ],
   )
 }
+
 /* render color */
 function renderColor(option: any): VNode {
   const darkConfig = isDark.value ? { style: { color: '#ffffff' } } : {}
@@ -34,14 +34,17 @@ function renderColor(option: any): VNode {
     ],
   )
 }
+
 /* Icon Style */
 
-/* 导入导出 */
+/* import and export */
 interface CacheData {
   data: Category[]
   settings: Settings
 }
+
 const siteStore = useSiteStore()
+
 function exportData() {
   const data = {
     data: siteStore.data,
@@ -58,6 +61,7 @@ function exportData() {
   a.click()
   URL.revokeObjectURL(url)
 }
+
 function importData() {
   const inputElement = document.createElement('input')
   inputElement.type = 'file'
@@ -82,6 +86,7 @@ function importData() {
   })
   inputElement.click()
 }
+
 function resetData() {
   resetStore.title = '重置确认'
   resetStore.content = '是否确认要重置所有设置?'

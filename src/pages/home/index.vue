@@ -16,12 +16,13 @@ toggleSiteSytle()
 
 <template>
   <TheDoc dark:op-80>
-    <div my-6vh p-24 bg="$main-bg-c" dark="bg-$dark-main-bg-c" class="mobile-index">
+    <div my-3vh p-24 bg="$main-bg-c" dark="bg-$dark-main-bg-c" class="mobile-index">
       <MainHeader />
       <MainClock />
       <MainSearch />
       <SiteContainer />
       <MainSetting />
+      <TheFooter />
     </div>
   </TheDoc>
 </template>

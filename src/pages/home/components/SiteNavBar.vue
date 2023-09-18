@@ -12,28 +12,28 @@ function handleCateClick(cateIndex: number) {
   else
     siteStore.setCateIndex(cateIndex)
 }
+
 const settingStore = useSettingStore()
+
 const { draggableOptions, handleStart, handleEnd } = useDrag()
 
 function handleDragEnd(e: any) {
   handleEnd()
   const { oldIndex, newIndex } = e
   const { cateIndex } = siteStore
-  // 若移动了当前分类 跟随移动
   if (oldIndex === cateIndex && newIndex !== cateIndex) {
     siteStore.setCateIndex(newIndex)
-  }
-  // 若移动其他分类
-  else {
-    // 若在同一侧移动 不会改变当前分类
-    if (
-      (oldIndex < cateIndex && newIndex < cateIndex)
-      || (oldIndex > cateIndex && newIndex > cateIndex)
-    ) return
-    if (oldIndex < cateIndex)
+  } else {
+    if ((oldIndex < cateIndex && newIndex < cateIndex) ||
+          (oldIndex > cateIndex && newIndex > cateIndex)) {
+      return
+    }
+
+    if (oldIndex < cateIndex) {
       siteStore.setCateIndex(cateIndex - 1)
-    else if (oldIndex > cateIndex)
+    } else if (oldIndex > cateIndex) {
       siteStore.setCateIndex(cateIndex + 1)
+    }
   }
 }
 </script>

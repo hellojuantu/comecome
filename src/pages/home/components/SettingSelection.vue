@@ -13,10 +13,13 @@ const props = defineProps({
     required: true,
   },
 })
+
 const emits = defineEmits(['update:modelValue'])
+
 defineOptions({
   inheritAttrs: false,
 })
+
 const modelValue = computed({
   get: () => props.modelValue,
   set: val => emits('update:modelValue', val),

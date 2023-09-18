@@ -7,10 +7,8 @@ import $_ from 'lodash'
 
 const settingStore = useSettingStore()
 
-// TODO 搜索词联想
-
 const keyword = ref('')
-// 从settings获取初始index
+
 const currentIndex = ref(0)
 
 const showKeyDownSel = ref(false)
@@ -40,6 +38,7 @@ function search() {
 function _getFavicon(search: Search) {
   return search.favicon || getFaviconUrl(search.url)
 }
+
 function changeSearch(i: number) {
   currentIndex.value = i
   toggleSelection()
@@ -77,7 +76,7 @@ function handleKeyDown(e: KeyboardEvent) {
 
 function handleInput(e: Event) {
   if (!keyword.value.trim()) {
-    clearNoticeKey() 
+    clearNoticeKey()
     return
   }
   showKeyDownSel.value = true
@@ -181,7 +180,7 @@ function setInactive(i: number) {
           <img :src="_getFavicon(searchList[currentIndex].value)" :style="iconStyle" cursor-pointer circle h-26 w-26
             style="opacity: 0.8;filter: saturate(64%);margin: auto;position: relative;top: 50%;transform: translateY(-50%);">
         </div>
-        <!-- 搜索引擎选择 -->
+        <!-- Search engine selector -->
         <div v-show="selectionVisible" absolute z-9 border-2 bg-fff l-0 t-100p w-200
           dark="border-black-20 bg-$dark-main-bg-c">
           <div v-for="(item, i) in searchList" :key="i" flex cursor-pointer items-center justify-between text-15 p-5
@@ -192,11 +191,11 @@ function setInactive(i: number) {
             </div>
             <div v-if="currentIndex === i" i-carbon:checkmark text-18 />
           </div>
-        </div>        
-      </div>      
+        </div>
+      </div>
       <div flex items-center w-320>
         <input ref="searchInputRef" v-model="keyword" h-full w-full bg-inherit op-80 text="15 text-$text-c-1"
-          dark="text-$text-dark-c-1" 
+          dark="text-$text-dark-c-1"
           @keydown.enter="search"
           @keydown="handleKeyDown"
           @input="handleInput"
@@ -204,15 +203,15 @@ function setInactive(i: number) {
           @keydown.down.exact="keyNext"
           @keydown.up.exact="keyPrev"
           @keydown.ctrl.n.exact="keyNext"
-          @keydown.ctrl.p.exact="keyPrev">       
-      </div>      
-      <div v-if="keyword?.length > 0" flex-center gap-x-4 w-44>       
+          @keydown.ctrl.p.exact="keyPrev">
+      </div>
+      <div v-if="keyword?.length > 0" flex-center gap-x-4 w-44>
         <div hover="op-80 rotate-180 scale-110" i-carbon:close mx-0 cursor-pointer text-20 w-44
-            op-40 transition duration-300 @click="handleCloseClick"></div>     
-      </div> 
+            op-40 transition duration-300 @click="handleCloseClick"></div>
+      </div>
       <div v-if="keyword?.length == 0" flex-center gap-x-4 w-44 cursor-pointer @click="search" class="search-img" style="background: transparent;">
-        <span i-carbon:search inline-block text-15 w-44 h-20 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />      
-      </div> 
-    </div>    
+        <span i-carbon:search inline-block text-15 w-44 h-20 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />
+      </div>
+    </div>
   </div>
 </template>
