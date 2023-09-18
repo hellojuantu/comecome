@@ -49,7 +49,7 @@ const { iconStyle } = useIconStyle()
         <div :class="{ 'group--setting': settingStore.isSetting }" flex style="align-items: center; margin-bottom: 10rem;">
           <!-- Group header -->
           <div flex style="max-width: 10%; overflow: hidden; align-items: center; flex: 0 0 10%;">
-            <span class="group__handle"  @click="handleGroupClick(i)" :class="{
+            <span class="group__handle" @click="handleGroupClick(i)" :class="{
                 'cursor-pointer ': settingStore.isSetting,
                 'group__header--setting': settingStore.isSetting,
                 'hover:bg-$site-hover-c': settingStore.isSetting && !settingStore.isDragging,

@@ -8,7 +8,8 @@ const modalStore = useModalStore()
     preset="dialog"
     title="Dialog"
     :show-icon="false"
-    :closable="false"
+    :closable="true"
+    :auto-focus="true"
     :on-after-leave="modalStore.clearInput"
   >
     <template #header>
