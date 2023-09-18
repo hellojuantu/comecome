@@ -145,7 +145,6 @@ const { iconStyle } = useIconStyle()
 .group--setting {
   margin-bottom: 12px !important;
   padding: 12px 6px;
-  //background: var(--setting-group-bg-c);
 }
 .group__header--setting {
   background-color: var(--category-c);
@@ -183,6 +182,10 @@ const { iconStyle } = useIconStyle()
 
   .group__header--mobile {
     margin-bottom: 12px;
+  }
+
+  .group--setting {
+    padding: 0px !important;
   }
 }
 </style>
