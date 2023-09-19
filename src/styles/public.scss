@@ -106,3 +106,11 @@ body::-webkit-scrollbar {
 // .mobile-index {
 //   margin: 0;
 // }
+
+.no_select {
+  -moz-user-select:none; /* 火狐 */
+  -webkit-user-select:none; /* 谷歌、Safari */
+  -ms-user-select:none; /* IE10+ */
+  user-select:none;
+  user-drag:none;
+}
