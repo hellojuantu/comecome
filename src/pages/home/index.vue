@@ -18,7 +18,7 @@ const settingStore = useSettingStore()
 
 <template>
   <TheDoc dark:op-80>
-    <div my-3vh p-24 bg="$main-bg-c" dark="bg-$dark-main-bg-c" class="mobile-index" :class="{ 'no_select': settingStore.isSetting}">
+    <div my-6vh p-24 bg="$main-bg-c" dark="bg-$dark-main-bg-c" class="mobile-index" :class="{ 'no_select': settingStore.isSetting}">
       <MainHeader />
       <MainClock />
       <MainSearch />
