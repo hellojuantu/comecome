@@ -4,7 +4,7 @@
 ## 介绍
 [COME COME](https://comecome.cc) 是一款极简的网址导航工具，旨在为用户提供纯粹、简洁、高效的上网体验。
 
-![index](/public/img/index.png)
+![index](https://comecome.cc/img/index.png)
 
 ## 感谢
 - 你的使用
