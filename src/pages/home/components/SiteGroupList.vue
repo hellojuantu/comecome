@@ -68,7 +68,7 @@ const { iconStyle } = useIconStyle()
               :component-data="{
                 tag: 'div',
                 type: 'transition-group',
-                class: 'grid grid-cols-3 gap-4 lg:grid-cols-6 md:grid-cols-6',
+                class: 'grid grid-cols-3 gap-8 lg:grid-cols-6 md:grid-cols-6',
               }"
               v-bind="draggableOptions"
               @start="handleStart"
@@ -181,7 +181,7 @@ const { iconStyle } = useIconStyle()
   }
 
   .group__header--mobile {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 }
 </style>
