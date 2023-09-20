@@ -92,6 +92,7 @@ function handleDragEnd(e: any) {
 <style lang="scss" scoped>
 .site--setting {
   border: 1px dashed var(--setting-border-c);
+  border-radius: 2px;
 }
 
 .site--select {

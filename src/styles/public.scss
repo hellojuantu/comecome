@@ -50,6 +50,7 @@ body::-webkit-scrollbar {
 .search {
   max-width: 100%;
   margin: 0 20px;
+  border-radius: 6px;
 }
 
 .search-sel {
@@ -72,14 +73,14 @@ body::-webkit-scrollbar {
   filter: none !important;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .logo-head {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .mobile-container {
     width: 100% !important;
   }

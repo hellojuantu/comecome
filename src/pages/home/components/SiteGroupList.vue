@@ -29,7 +29,7 @@ const { iconStyle } = useIconStyle()
 </script>
 
 <template>
-  <section py-24 text-14>
+  <section py-28 text-14>
     <draggable
       :list="siteStore.data[siteStore.cateIndex].groupList"
       item-key="id"
@@ -46,7 +46,7 @@ const { iconStyle } = useIconStyle()
       @end="handleEnd"
     >
       <template #item="{ element: group, index: i }: { element: Group, index: number }">
-        <div class="group__header--mobile" :class="{ 'group--setting': settingStore.isSetting }" flex style="align-items: center;">
+        <div class="group__header--mobile" flex style="align-items: center;">
           <!-- Group header -->
           <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
@@ -68,7 +68,7 @@ const { iconStyle } = useIconStyle()
               :component-data="{
                 tag: 'div',
                 type: 'transition-group',
-                class: 'grid grid-cols-3 gap-8 lg:grid-cols-6 md:grid-cols-6',
+                class: 'grid grid-cols-3 gap-4 lg:grid-cols-6 md:grid-cols-6',
               }"
               v-bind="draggableOptions"
               @start="handleStart"
@@ -85,7 +85,7 @@ const { iconStyle } = useIconStyle()
                     class="site__handle"
                     :class="{ 'site--setting': settingStore.isSetting, 'hover:bg-$site-hover-c': !settingStore.isDragging }"
                     :href="site.url" target="_blank"
-                    inline-flex cursor-pointer items-center gap-x-4 px-8 py-8 max-w-100p
+                    inline-flex cursor-pointer items-center gap-x-4 px-4 py-4 max-w-100p
                     @click="handleSiteClick(site.url, i, index)"
                     style="margin: 0 2px;"
                   >
@@ -127,6 +127,7 @@ const { iconStyle } = useIconStyle()
 <style lang="scss" scoped>
 .site--setting {
   border: 1px dashed var(--setting-border-c);
+  border-radius: 2px;
 }
 
 .group__name {
@@ -144,16 +145,12 @@ const { iconStyle } = useIconStyle()
   }
 }
 
-.group--setting {
-  margin-bottom: 12px !important;
-  padding: 12px 6px;
-}
-
 .group__header--setting {
   background-color: var(--category-c);
   margin: 0 2px;
   padding: 4px;
   font-size: 13px;
+  border-radius: 2px;
 }
 
 .group__header--all {
@@ -172,7 +169,7 @@ const { iconStyle } = useIconStyle()
   margin-bottom: 10rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .group__header--all {
     max-width: 15%;
     flex: 0 0 15%;
@@ -185,10 +182,6 @@ const { iconStyle } = useIconStyle()
 
   .group__header--mobile {
     margin-bottom: 12px;
-  }
-
-  .group--setting {
-    padding: 0px !important;
   }
 }
 </style>
