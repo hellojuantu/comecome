@@ -111,7 +111,7 @@ function resetData() {
 </script>
 
 <template>
-  <section v-if="settingStore.isSetting" px="md:60 lg:120" mt-10>
+  <section v-if="settingStore.isSetting" px="md:60 lg:120">
     <div grid grid-cols-2 gap-24 lg:grid-cols-2 md:grid-cols-2>
       <SettingSelection
         v-model="settingStore.settings.theme"
