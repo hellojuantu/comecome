@@ -1,5 +1,17 @@
 <script setup lang="ts">
 const modalStore = useModalStore()
+const errorInput = ref(false)
+
+function handleAllCommit(e: Event) {
+  if (modalStore.inputValues.name.length <= 0 ||
+      ('site' === modalStore.target && modalStore.inputValues.url.length <= 0)) {
+    errorInput.value = true
+    setTimeout(() => errorInput.value = false, 1000)
+    return
+  }
+  modalStore.handleCommit()
+  setTimeout(() => errorInput.value = false, 1000)
+}
 </script>
 
 <template>
@@ -8,7 +20,7 @@ const modalStore = useModalStore()
     preset="dialog"
     title="Dialog"
     :show-icon="false"
-    :closable="true"
+    :closable="false"
     :auto-focus="true"
     :on-after-leave="modalStore.clearInput"
   >
@@ -16,20 +28,27 @@ const modalStore = useModalStore()
       <div>{{ modalStore.title }}</div>
     </template>
     <div>
-      <n-input required v-model:value="modalStore.inputValues.name" placeholder="名称" my-8 @keydown.enter="modalStore.handleCommit" />
+      <n-input 
+        :status="errorInput && modalStore.inputValues.name.length <= 0 ? 'error' : 'success'" 
+        v-model:value="modalStore.inputValues.name" 
+        placeholder="名称" 
+        my-8
+        @keydown.enter="handleAllCommit" 
+      />
       <n-input
         v-if="modalStore.target === 'site'"
         v-model:value="modalStore.inputValues.url"
         placeholder="链接"
         my-8
-        @keydown.enter="modalStore.handleCommit"
+        @keydown.enter="handleAllCommit"
+        :status="errorInput && modalStore.inputValues.url.length <= 0 ? 'error' : 'success'"
       />
       <n-input
         v-if="modalStore.target === 'site'"
         v-model:value="modalStore.inputValues.favicon"
         placeholder="图标链接（选填）"
         my-8
-        @keydown.enter="modalStore.handleCommit"
+        @keydown.enter="handleAllCommit"
       />
     </div>
     <template #action>
@@ -40,7 +59,7 @@ const modalStore = useModalStore()
         <n-button v-if="modalStore.action === 'update'" type="error" @click="modalStore.handleDelete">
           删除
         </n-button>
-        <n-button type="primary" text-color='#ffffff' @click="modalStore.handleCommit">
+        <n-button type="primary" text-color='#ffffff' @click="handleAllCommit">
           确认
         </n-button>
       </div>
