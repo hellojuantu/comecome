@@ -4,10 +4,8 @@ import { RouterLink } from 'vue-router'
 const route = useRoute()
 const settingsActived = ref(false)
 
-if (route.path == '/setting') {
-  settingsActived.value = true
-} else {
-  settingsActived.value = false
+function toggleSetting() {
+  return settingsActived.value = (route.path === '/setting')
 }
 
 function getIconClass(routeName: string) {
@@ -24,11 +22,8 @@ function getIconClass(routeName: string) {
         <img w-16 src="/favicon.png" inline-block text-32 transition duration-300 hover="opacity-70">
       </div>
     </RouterLink>
-    <div flex gap-x-8 v-if=settingsActived>
-      <RouterLink :class="getIconClass('setting')" to="/" i-carbon:settings icon-btn />
-    </div>
-    <div flex gap-x-8 v-if=!settingsActived>
-      <RouterLink :class="getIconClass('setting')" to="/setting" i-carbon:settings icon-btn />
+    <div flex gap-x-8>
+      <RouterLink :class="getIconClass('setting')" :to="toggleSetting() ? '/' : '/setting'" i-carbon:settings icon-btn />
     </div>
   </div>
 </template>

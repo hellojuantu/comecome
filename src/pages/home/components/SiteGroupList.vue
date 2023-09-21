@@ -130,8 +130,8 @@ const { iconStyle } = useIconStyle()
 .group__header {
   color: #888;
 }
+
 .group__header--setting {
-  color: var(--primary-light-c);
   background-color: var(--category-c);
   color: var(--primary-light-c);
   margin: 0 2px;

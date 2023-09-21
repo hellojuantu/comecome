@@ -30,10 +30,14 @@ const settingStore = useSettingStore()
 </template>
 
 <route lang="json">
-{
-  "path": "/",
-  "meta": {
-    "auth": true
+  {
+    "path": "/",
+    "children": [
+      {
+        "name": "setting",
+        "path": "setting",
+        "component": "@/components/Blank.vue"
+      }
+    ]
   }
-}
-</route>
+  </route>
