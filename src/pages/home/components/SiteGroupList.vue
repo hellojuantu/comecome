@@ -35,8 +35,6 @@ const { iconStyle } = useIconStyle()
       item-key="id"
       handle=".group__handle"
       drag-class="dragging"
-      :delay="1"
-      :fallbackTolerance="3"
       :component-data="{
         tag: 'div',
         type: 'transition-group',
@@ -68,13 +66,11 @@ const { iconStyle } = useIconStyle()
               :component-data="{
                 tag: 'div',
                 type: 'transition-group',
-                class: 'grid grid-cols-3 gap-8 lg:grid-cols-6 md:grid-cols-6',
+                class: 'grid gap-8 grid-cols-3 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6',
               }"
               v-bind="draggableOptions"
               @start="handleStart"
               @end="handleEnd"
-              :delay="1"
-              :fallbackTolerance="3"
               flex
               style="flex: 0 0 100%;"
             >
@@ -169,7 +165,7 @@ const { iconStyle } = useIconStyle()
   margin-bottom: 10rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .group__header--all {
     max-width: 15%;
     flex: 0 0 15%;
@@ -182,6 +178,18 @@ const { iconStyle } = useIconStyle()
 
   .group__header--mobile {
     margin-bottom: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .group__header--all {
+    max-width: 15%;
+    flex: 0 0 15%;
+  }
+
+  .group__content--all {
+    flex: 0 0 85%;
+    max-width: 85%;
   }
 }
 </style>

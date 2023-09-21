@@ -1,3 +1,5 @@
+import { isSmScreen } from "./app"
+
 export function useDrag() {
   const settingStore = useSettingStore()
 
@@ -6,6 +8,8 @@ export function useDrag() {
     disabled: !settingStore.isSetting,
     ghostClass: 'ghost',
     forceFallback: true,
+    delay: isSmScreen.value ? 0 : 100,
+    fallbackTolerance: 3,
   }))
 
   function handleStart() {
