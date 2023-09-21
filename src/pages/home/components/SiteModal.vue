@@ -16,7 +16,7 @@ const modalStore = useModalStore()
       <div>{{ modalStore.title }}</div>
     </template>
     <div>
-      <n-input v-model:value="modalStore.inputValues.name" placeholder="名称" my-8 @keydown.enter="modalStore.handleCommit" />
+      <n-input required v-model:value="modalStore.inputValues.name" placeholder="名称" my-8 @keydown.enter="modalStore.handleCommit" />
       <n-input
         v-if="modalStore.target === 'site'"
         v-model:value="modalStore.inputValues.url"

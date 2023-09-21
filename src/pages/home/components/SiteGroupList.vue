@@ -29,7 +29,7 @@ const { iconStyle } = useIconStyle()
 </script>
 
 <template>
-  <section py-28 text-14>
+  <section py-28 text-15>
     <draggable
       :list="siteStore.data[siteStore.cateIndex].groupList"
       item-key="id"
@@ -95,12 +95,12 @@ const { iconStyle } = useIconStyle()
                       h-22 w-22
                       @error="(e: any) => e.target.src = DEFAULT_FAVICON"
                     >
-                    <span whitespace-nowrap text-14 overflow-hidden>{{ site.name }}</span>
+                    <span whitespace-nowrap text-15 overflow-hidden>{{ site.name }}</span>
                   </div>
                 </div>
               </template>
               <template #footer>
-                <div v-if="settingStore.isSetting && siteStore.data[siteStore.cateIndex].groupList[i].siteList.length < 6" min-h-38>
+                <div v-if="!settingStore.isDragging && settingStore.isSetting && siteStore.data[siteStore.cateIndex].groupList[i].siteList.length < 6" min-h-32>
                   <n-button class="h-full" type="primary" secondary :focusable="false" @click="modalStore.showModal('add', 'site', i)">
                     <template #icon>
                       <div i-carbon:add />

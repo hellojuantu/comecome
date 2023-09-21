@@ -39,7 +39,7 @@ function handleDragEnd(e: any) {
 </script>
 
 <template>
-  <section flex-center text-14>
+  <section flex-center text-15>
     <draggable
       class="flex gap-x-12 "
       :list="siteStore.data"
@@ -62,7 +62,8 @@ function handleDragEnd(e: any) {
             'border-$primary-c text-$primary-c': siteStore.cateIndex === i,
             'hover:text-$primary-c': !settingStore.isSetting,
             'site--setting': settingStore.isSetting,
-            'site--select': siteStore.cateIndex === i && settingStore.isSetting
+            'site--select': siteStore.cateIndex === i && settingStore.isSetting,
+            'hover:bg-$site-hover-c': settingStore.isSetting,
           }"
           border="b-2 transparent"
           cursor-pointer transition-color duration-300 p-4
@@ -74,6 +75,7 @@ function handleDragEnd(e: any) {
       </template>
     </draggable>
     <n-button
+      min-h-31
       v-if="settingStore.isSetting"
       class="ml-12"
       type="primary"
