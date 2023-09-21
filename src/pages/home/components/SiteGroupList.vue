@@ -49,9 +49,10 @@ const { iconStyle } = useIconStyle()
           <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
                 'cursor-pointer ': settingStore.isSetting,
+                'group__header': !settingStore.isSetting,
                 'group__header--setting': settingStore.isSetting,
                 'hover:bg-$site-hover-c': settingStore.isSetting && !settingStore.isDragging,
-              }" px-0 py-4 style="white-space: nowrap; color: #888;">
+              }" px-0 py-4 style="white-space: nowrap;">
               {{ group.name }}
             </span>
           </div>
@@ -126,23 +127,12 @@ const { iconStyle } = useIconStyle()
   border-radius: 2px;
 }
 
-.group__name {
-  position: relative;
-  &::before {
-    content: '';
-    width: 3px;
-    height: 72%;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--primary-c);
-    border-radius: 2px;
-  }
+.group__header {
+  color: #888;
 }
-
 .group__header--setting {
   background-color: var(--category-c);
+  color: var(--primary-light-c);
   margin: 0 2px;
   padding: 4px;
   font-size: 13px;
