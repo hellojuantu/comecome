@@ -73,7 +73,7 @@ function handleDragEnd(e: any) {
       </template>
     </draggable>
     <n-button
-      min-h-31
+      min-h-30
       v-if="settingStore.isSetting"
       class="ml-12"
       type="primary"
