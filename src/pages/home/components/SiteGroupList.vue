@@ -29,7 +29,7 @@ const { iconStyle } = useIconStyle()
 </script>
 
 <template>
-  <section py-28 text-15>
+  <section py-28 text-14 md="text-16" lg="text-16">
     <draggable
       :list="siteStore.data[siteStore.cateIndex].groupList"
       item-key="id"
@@ -66,7 +66,7 @@ const { iconStyle } = useIconStyle()
               :component-data="{
                 tag: 'div',
                 type: 'transition-group',
-                class: 'grid gap-8 grid-cols-3 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6',
+                class: 'grid gap-8 grid-cols-3 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6',
               }"
               v-bind="draggableOptions"
               @start="handleStart"
@@ -91,7 +91,7 @@ const { iconStyle } = useIconStyle()
                       h-22 w-22
                       @error="(e: any) => e.target.src = DEFAULT_FAVICON"
                     >
-                    <span whitespace-nowrap text-15 overflow-hidden>{{ site.name }}</span>
+                    <span whitespace-nowrap text-14 lg="text-16" overflow-hidden>{{ site.name }}</span>
                   </div>
                 </div>
               </template>
@@ -178,18 +178,6 @@ const { iconStyle } = useIconStyle()
 
   .group__header--mobile {
     margin-bottom: 16px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .group__header--all {
-    max-width: 15%;
-    flex: 0 0 15%;
-  }
-
-  .group__content--all {
-    flex: 0 0 85%;
-    max-width: 85%;
   }
 }
 </style>

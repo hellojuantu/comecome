@@ -39,7 +39,7 @@ function handleDragEnd(e: any) {
 </script>
 
 <template>
-  <section flex-center text-15>
+  <section flex-center text-14 md="text-16" lg="text-16">
     <draggable
       class="flex gap-x-12 "
       :list="siteStore.data"

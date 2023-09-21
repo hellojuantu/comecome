@@ -72,14 +72,14 @@ body::-webkit-scrollbar {
   filter: none !important;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 640px) {
   .logo-head {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 640px) {
   .mobile-container {
     width: 100% !important;
   }
@@ -94,23 +94,10 @@ body::-webkit-scrollbar {
   }
 }
 
-// .mobile-container {
-//   width: 100% !important;
-// }
-
-// .mobile-doc {
-//   width: 100% !important;
-//   margin: 0 !important;
-// }
-
-// .mobile-index {
-//   margin: 0;
-// }
-
 .no_select {
-  -moz-user-select:none; /* 火狐 */
-  -webkit-user-select:none; /* 谷歌、Safari */
-  -ms-user-select:none; /* IE10+ */
+  -moz-user-select:none;
+  -webkit-user-select:none; 
+  -ms-user-select:none;
   user-select:none;
   user-drag:none;
 }
