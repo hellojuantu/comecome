@@ -17,6 +17,22 @@ export type ThemeSetting = SettingItem<Theme>
 
 export const themeList: ThemeSetting[] = [
   {
+    name: '月白',
+    enName: 'MoonWhite',
+    value: {
+      primaryC: '#555555',
+      primaryLightC: '#777777',
+      primaryDarkC: '#333333',
+      siteHoverC: '#77777722',
+      settingBorderC: '#333333aa',
+      settingGroupBgC: '#77777730',
+      bgC: '#f3f4f6',
+      mainBgC: '#f3f4f6',
+      buttonC: '#E7E6E1',
+      categoryC: 'rgba(85, 85, 85, 0.16)'
+    },
+  },
+  {
     name: '初春',
     enName: 'EarlySpring',
     value: {
@@ -62,22 +78,6 @@ export const themeList: ThemeSetting[] = [
       mainBgC: '#f3f4f6',
       buttonC: '#BF9270',
       categoryC: 'rgba(188, 108, 37, 0.16)'
-    },
-  },
-  {
-    name: '月白',
-    enName: 'MoonWhite',
-    value: {
-      primaryC: '#555555',
-      primaryLightC: '#777777',
-      primaryDarkC: '#333333',
-      siteHoverC: '#77777722',
-      settingBorderC: '#333333aa',
-      settingGroupBgC: '#77777730',
-      bgC: '#f3f4f6',
-      mainBgC: '#f3f4f6',
-      buttonC: '#E7E6E1',
-      categoryC: 'rgba(85, 85, 85, 0.16)'
     },
   },
 ]

@@ -25,6 +25,7 @@ export const themeVars: ThemeVars<Theme> = Object.keys(
 
 export function toggleTheme(theme: string) {
   const newTheme = themeList.find(item => item.enName === theme)!.value
-  for (const key in newTheme)
+  for (const key in newTheme) {
     themeVars[key as ThemeVar].value = newTheme[key as ThemeVar]
+  }
 }
