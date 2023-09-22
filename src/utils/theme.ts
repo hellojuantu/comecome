@@ -21,10 +21,10 @@ export const themeList: ThemeSetting[] = [
     enName: 'MoonWhite',
     value: {
       primaryC: '#555555',
-      primaryLightC: '#777777',
+      primaryLightC: '#8a8a8a',
       primaryDarkC: '#333333',
       siteHoverC: '#77777722',
-      settingBorderC: '#333333aa',
+      settingBorderC: '#737373',
       settingGroupBgC: '#77777730',
       bgC: '#f3f4f6',
       mainBgC: '#f3f4f6',
