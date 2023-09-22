@@ -12,7 +12,7 @@ export const iconStyleList: IconStyleSetting[] = [
   {
     name: '朴素',
     enName: 'Plain',
-    value: { name: '朴素', enName: 'Plain', style: { opacity: '0.8', filter: 'saturate(72%)' } },
+    value: { name: '朴素', enName: 'Plain', style: { opacity: '0.8', filter: 'saturate(64%)' } },
   },
   {
     name: '鲜艳',

@@ -27,7 +27,7 @@ const renderStore = useRenderStore()
 </script>
 
 <template>
-  <section :key="renderStore.siteGroupListKey" py-28 text-14 md="text-15" lg="text-15">
+  <section :key="renderStore.siteGroupListKey" pt-14 pb-28 text-14 md="text-15 pt-28" lg="text-15 pt-28">
     <draggable
       :list="siteStore.data[siteStore.cateIndex].groupList"
       item-key="id"
@@ -46,11 +46,10 @@ const renderStore = useRenderStore()
           <!-- Group header -->
           <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
-                'cursor-pointer ': settingStore.isSetting,
-                'group__header': !settingStore.isSetting,
+                'cursor-pointer': settingStore.isSetting,
                 'group__header--setting': settingStore.isSetting,
                 'hover:bg-$site-hover-c': settingStore.isSetting && !settingStore.isDragging,
-              }" px-0 py-4 style="white-space: nowrap;">
+              }" shrink-0 px-0 py-4 whitespace-nowrap text-15 op-80 overflow-hidden>
               {{ group.name }}
             </span>
           </div>
@@ -120,13 +119,8 @@ const renderStore = useRenderStore()
   border-radius: 2px;
 }
 
-.group__header {
-  color: #888;
-}
-
 .group__header--setting {
-  background-color: var(--category-c);
-  color: var(--primary-light-c);
+  background-color: var(--site-hover-c);
   margin: 0 2px;
   padding: 4px;
   font-size: 14px;

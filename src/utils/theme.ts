@@ -26,7 +26,7 @@ export const themeList: ThemeSetting[] = [
       siteHoverC: '#77777722',
       settingBorderC: '#737373',
       settingGroupBgC: '#77777730',
-      bgC: '#f3f4f6',
+      bgC: '#E7E6E1',
       mainBgC: '#f3f4f6',
       buttonC: '#E7E6E1',
       categoryC: 'rgba(85, 85, 85, 0.16)'

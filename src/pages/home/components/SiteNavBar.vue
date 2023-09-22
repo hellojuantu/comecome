@@ -96,6 +96,6 @@ function handleDragEnd(e: any) {
 }
 
 .site--select {
-  background-color: var(--category-c);
+  background-color: var(--setting-group-bg-c);
 }
 </style>
