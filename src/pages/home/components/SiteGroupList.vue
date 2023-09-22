@@ -64,7 +64,7 @@ const settingStore = useSettingStore()
               :component-data="{
                 tag: 'div',
                 type: 'transition-group',
-                class: 'grid gap-8 grid-cols-3 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6',
+                class: 'grid gap-8 grid-cols-3 md:gap-12 lg:gap-12 xl:gap-12 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6',
               }"
               v-bind="draggableOptions"
               @start="handleStart"
