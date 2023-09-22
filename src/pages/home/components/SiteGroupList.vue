@@ -27,7 +27,7 @@ const renderStore = useRenderStore()
 </script>
 
 <template>
-  <section :key="renderStore.siteGroupListKey" py-28 text-14 md="text-16" lg="text-16">
+  <section :key="renderStore.siteGroupListKey" py-28 text-14 md="text-15" lg="text-15">
     <draggable
       :list="siteStore.data[siteStore.cateIndex].groupList"
       item-key="id"
@@ -85,7 +85,7 @@ const renderStore = useRenderStore()
                     style="margin: 0 2px;"
                   >
                     <Favicon class="shrink-0" :site="site" :site-index="index" :group-index="i" />
-                    <span whitespace-nowrap text-14 md="text-16" lg="text-16" overflow-hidden>{{ site.name }}</span>
+                    <span whitespace-nowrap text-14 md="text-15" lg="text-15" overflow-hidden>{{ site.name }}</span>
                   </a>
                 </div>
               </template>
@@ -129,7 +129,7 @@ const renderStore = useRenderStore()
   color: var(--primary-light-c);
   margin: 0 2px;
   padding: 4px;
-  font-size: 13px;
+  font-size: 14px;
   border-radius: 2px;
 }
 

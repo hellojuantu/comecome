@@ -163,7 +163,7 @@ function setInactive(i: number) {
       <div @mouseleave="handleLeave()" v-show="showKeyDownSel" v-on-click-outside="handleKeyRecomend" absolute z-9 class="search-sel" style="top: 100%; width: 100%; height: 10rem;">
         <!-- keys recommend -->
         <div z-9 bg-fff l-0 t-100p dark="border-grey-8 bg-18181a">
-          <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-14 md="text-16" lg="text-16" p-5 
+          <div v-for="(item, i) in noticeKeyList.slice(1)" :key="i + 1" text-14 md="text-15" lg="text-15" p-5
             @mouseover="handleHover(i + 1)"
             @click="jumpSearch(i + 1)"
             @touchstart="setActive(i + 1)"
@@ -183,7 +183,7 @@ function setInactive(i: number) {
         <!-- Search engine selector -->
         <div v-show="selectionVisible" absolute z-9 border-2 bg-fff l-0 t-100p w-200
           dark="border-black-20 bg-$dark-main-bg-c">
-          <div v-for="(item, i) in searchList" :key="i" flex cursor-pointer items-center justify-between text-14 md="text-16" lg="text-16" p-5
+          <div v-for="(item, i) in searchList" :key="i" flex cursor-pointer items-center justify-between text-14 md="text-15" lg="text-15" p-5
             hover="bg-$site-hover-c" @click="changeSearch(i)">
             <div flex-center gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
               <img decoding="async" loading=lazy :src="_getFavicon(item.value)" :style="iconStyle" circle h-20 w-20>
@@ -210,7 +210,7 @@ function setInactive(i: number) {
             op-40 transition duration-300 @click="handleCloseClick"></div>
       </div>
       <div v-if="keyword?.length == 0" flex-center gap-x-4 w-44 cursor-pointer @click="search" class="search-img" style="background: transparent;">
-        <span i-carbon:search inline-block text-14 md="text-16" lg="text-16" w-44 h-20 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />
+        <span i-carbon:search inline-block text-14 md="text-15" lg="text-15" w-44 h-20 style="background-color: var(--primary-c); opacity: 0.8; filter: saturate(84%); margin: auto;" />
       </div>
     </div>
   </div>

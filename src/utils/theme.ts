@@ -20,8 +20,8 @@ export const themeList: ThemeSetting[] = [
     name: '月白',
     enName: 'MoonWhite',
     value: {
-      primaryC: '#555555',
-      primaryLightC: '#8a8a8a',
+      primaryC: '#5e5e5e',
+      primaryLightC: '#777777',
       primaryDarkC: '#333333',
       siteHoverC: '#77777722',
       settingBorderC: '#737373',
