@@ -2,7 +2,7 @@
 import SettingSelection from './SettingSelection.vue'
 import type { Settings } from '@/stores/setting'
 import type { Category } from '@/stores/site'
-import type { ThemeSetting } from '@/utils'
+import type { ThemeSetting, getRandomComplexNumber } from '@/utils'
 import { iconStyleList, searchList, themeList, siteStyleList } from '@/utils'
 import ResetModal from './ResetModal.vue'
 import preset from '@/preset.json'
@@ -11,6 +11,7 @@ import { toggleSiteSytle } from '@/composables/dark'
 
 const resetStore = useResetModalStore()
 const settingStore = useSettingStore()
+const renderStore = useRenderStore()
 
 /* ThemeSetting */
 function renderThemeLabel(option: ThemeSetting): VNode {
@@ -72,15 +73,13 @@ function importData() {
       try {
         const jsonStr = await file.text()
         const data = JSON.parse(jsonStr) as CacheData
-        if (!data.data || !data.settings)
+        if (!data.data || !data.settings) {
           throw new Error('非法的数据文件')
-        siteStore.setData(data.data)
-        settingStore.setSettings(data.settings)
-        toggleTheme(data.settings.theme)
-        toggleSiteSytle()
+        }
+        loadData(data)
       }
       catch (error) {
-        window.$notification.error({ content: '请导入合法的数据文件', duration: 3000 })
+        window.$message.error('请导入合法的数据文件', { duration: 2000 })
       }
     }
   })
@@ -95,19 +94,21 @@ function resetData() {
     router.back()
   }
   resetStore.finishCommit = () => {
-    // console.log("finishCOmmit", preset)
     const clonedPreset = JSON.parse(JSON.stringify(preset))
-    // console.log("clonedPreset", clonedPreset)
-
     const data = clonedPreset as CacheData
-    siteStore.setData(data.data)
-    settingStore.setSettings(data.settings)
-    toggleTheme(data.settings.theme)
-    toggleSiteSytle()
-    siteStore.cateIndex = 0
+    loadData(data)
+    window.$message.success( '重置成功', { duration: 2000 })
   }
 }
 
+function loadData(data: any) {
+  siteStore.setData(data.data)
+  settingStore.setSettings(data.settings)
+  toggleTheme(data.settings.theme)
+  toggleSiteSytle()
+  siteStore.cateIndex = 0
+  renderStore.refreshSiteGroupList()
+}
 </script>
 
 <template>
