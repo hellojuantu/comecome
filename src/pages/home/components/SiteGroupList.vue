@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
-import { DEFAULT_FAVICON, getFaviconUrl } from '@/utils'
+import Favicon from './Favicon.vue'
 import type { Group, Site } from '@/stores/site'
 
 const modalStore = useModalStore()
 const siteStore = useSiteStore()
 const route = useRoute()
 
-function handleSiteClick(url: string, groupIndex: number, siteIndex: number) {
+function handleSiteClick(url: string, groupIndex: number, siteIndex: number, e: Event) {
   if (route.name === 'setting') {
+    e.preventDefault()
     modalStore.showModal('update', 'site', groupIndex, siteIndex)
-  } else {
-    window.open(url, '_blank')
   }
 }
 function handleGroupClick(groupIndex: number) {
@@ -24,8 +23,6 @@ const addGroupVisible = computed(() => route.name === 'setting' && siteStore.dat
 const { draggableOptions, handleStart, handleEnd } = useDrag()
 
 const settingStore = useSettingStore()
-
-const { iconStyle } = useIconStyle()
 </script>
 
 <template>
@@ -78,22 +75,17 @@ const { iconStyle } = useIconStyle()
               <template #item="{ element: site, index }: { element: Site, index: number }">
                 <div>
                   <!-- Site item -->
-                  <div
+                  <a
                     class="site__handle"
                     :class="{ 'site--setting': settingStore.isSetting, 'hover:bg-$site-hover-c': !settingStore.isDragging }"
                     :href="site.url" target="_blank"
                     inline-flex cursor-pointer items-center gap-x-4 px-4 py-4 max-w-100p
-                    @click="handleSiteClick(site.url, i, index)"
+                    @click="e => handleSiteClick(site.url, i, index, e)"
                     style="margin: 0 2px;"
                   >
-                    <img
-                      :src="site.favicon || getFaviconUrl(site.url)"
-                      :style="iconStyle"
-                      h-22 w-22
-                      @error="(e: any) => e.target.src = DEFAULT_FAVICON"
-                    >
+                    <Favicon class="shrink-0" :site="site" :site-index="index" :group-index="i" />
                     <span whitespace-nowrap text-14 lg="text-16" overflow-hidden>{{ site.name }}</span>
-                  </div>
+                  </a>
                 </div>
               </template>
               <template #footer>

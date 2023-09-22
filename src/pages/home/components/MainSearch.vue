@@ -177,7 +177,7 @@ function setInactive(i: number) {
       </div>
       <div v-on-click-outside="() => selectionVisible = false" relative flex-center w-44 class="search-sel">
         <div class="search-img" style="width: inherit; height: inherit;" @click="toggleSelection">
-          <img :src="_getFavicon(searchList[currentIndex].value)" :style="iconStyle" cursor-pointer circle h-26 w-26
+          <img decoding="async" loading=lazy :src="_getFavicon(searchList[currentIndex].value)" :style="iconStyle" cursor-pointer circle h-26 w-26
             style="opacity: 0.8;filter: saturate(64%);margin: auto;position: relative;top: 50%;transform: translateY(-50%);">
         </div>
         <!-- Search engine selector -->
@@ -186,7 +186,7 @@ function setInactive(i: number) {
           <div v-for="(item, i) in searchList" :key="i" flex cursor-pointer items-center justify-between text-14 md="text-16" lg="text-16" p-5
             hover="bg-$site-hover-c" @click="changeSearch(i)">
             <div flex-center gap-x-8 style="margin: 0.75rem; margin-left: 2rem;">
-              <img :src="_getFavicon(item.value)" :style="iconStyle" circle h-20 w-20>
+              <img decoding="async" loading=lazy :src="_getFavicon(item.value)" :style="iconStyle" circle h-20 w-20>
               <div>{{ item.name }}</div>
             </div>
             <div v-if="currentIndex === i" i-carbon:checkmark text-18 />

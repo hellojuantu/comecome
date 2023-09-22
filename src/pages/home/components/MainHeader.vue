@@ -19,7 +19,7 @@ function getIconClass(routeName: string) {
   <div flex justify-between py-24 px="12 md:24 lg:48" :class="{'logo-head': 'logo_head'}">
     <RouterLink to="/">
       <div text="$primary-c" flex-center text-16 style='font-weight: bold;' >
-        <img w-16 src="/favicon.png" inline-block text-32 transition duration-300 hover="opacity-70">
+        <img decoding="async" loading=lazy w-16 src="/favicon.png" inline-block text-32 transition duration-300 hover="opacity-70">
       </div>
     </RouterLink>
     <div flex gap-x-8>
