@@ -64,7 +64,7 @@ function handleDragEnd(e: any) {
             'hover:bg-$site-hover-c': settingStore.isSetting,
           }"
           border="b-2 transparent"
-          cursor-pointer transition-color duration-300 p-4
+          cursor-pointer transition-color duration-300 p-4 shrink-0
           v-on:click.native="handleCateClick(i)"
           style="text-align: center;"
         >
