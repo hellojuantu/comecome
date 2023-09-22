@@ -84,7 +84,7 @@ const settingStore = useSettingStore()
                     style="margin: 0 2px;"
                   >
                     <Favicon class="shrink-0" :site="site" :site-index="index" :group-index="i" />
-                    <span whitespace-nowrap text-14 lg="text-16" overflow-hidden>{{ site.name }}</span>
+                    <span whitespace-nowrap text-14 md="text-16" lg="text-16" overflow-hidden>{{ site.name }}</span>
                   </a>
                 </div>
               </template>

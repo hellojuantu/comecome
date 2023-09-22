@@ -6,11 +6,11 @@ function handleAllCommit(e: Event) {
   if (modalStore.inputValues.name.length <= 0 ||
       ('site' === modalStore.target && modalStore.inputValues.url.length <= 0)) {
     errorInput.value = true
-    setTimeout(() => errorInput.value = false, 1000)
+    setTimeout(() => errorInput.value = false, 500)
     return
   }
   modalStore.handleCommit()
-  setTimeout(() => errorInput.value = false, 1000)
+  setTimeout(() => errorInput.value = false, 500)
 }
 </script>
 
@@ -28,12 +28,12 @@ function handleAllCommit(e: Event) {
       <div>{{ modalStore.title }}</div>
     </template>
     <div>
-      <n-input 
-        :status="errorInput && modalStore.inputValues.name.length <= 0 ? 'error' : 'success'" 
-        v-model:value="modalStore.inputValues.name" 
-        placeholder="名称" 
+      <n-input
+        :status="errorInput && modalStore.inputValues.name.length <= 0 ? 'error' : 'success'"
+        v-model:value="modalStore.inputValues.name"
+        placeholder="名称"
         my-8
-        @keydown.enter="handleAllCommit" 
+        @keydown.enter="handleAllCommit"
       />
       <n-input
         v-if="modalStore.target === 'site'"
