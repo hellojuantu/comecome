@@ -58,7 +58,7 @@ function handleDragEnd(e: any) {
           class="dragging"
           :class="{
             // white setting
-            'text-$primary-light-c hover:text-$text-c': settingStore.isWhiteTheme,
+            'text-$primary-light-c hover:text-$text-c': siteStore.cateIndex !== i && settingStore.isWhiteTheme,
             'border-$text-c text-$text-c': siteStore.cateIndex === i && settingStore.isWhiteTheme,
             // colorful setting
             'border-$primary-c text-$primary-c': siteStore.cateIndex === i && !settingStore.isWhiteTheme,
