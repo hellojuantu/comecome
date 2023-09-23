@@ -28,7 +28,7 @@ const renderStore = useRenderStore()
 </script>
 
 <template>
-  <section :key="renderStore.siteGroupListKey" :class="{'group__setting--all': settingStore.isSetting}" py-28 text-14 md="text-15 pt-28" lg="text-15 pt-28">
+  <section :key="renderStore.siteGroupListKey" pb-14 text-14 md="text-15" lg="text-15">
     <draggable
       :list="siteStore.data[siteStore.cateIndex].groupList"
       item-key="id"
@@ -43,7 +43,10 @@ const renderStore = useRenderStore()
       @end="handleEnd"
     >
       <template #item="{ element: group, index: i }: { element: Group, index: number }">
-        <div class="group__header--mobile" flex style="align-items: center;">
+        <div :class="{
+            'group__header--line': siteStore.data[siteStore.cateIndex].groupList.length !== i + 1
+          }"
+          flex style="align-items: center;">
           <!-- Group header -->
           <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
@@ -105,7 +108,7 @@ const renderStore = useRenderStore()
       </template>
     </draggable>
     <!-- Add group button -->
-    <div v-if="addGroupVisible" my-12>
+    <div v-if="addGroupVisible" my-16 md="my-32" lg="my-32">
       <n-button type="primary" secondary w-full :focusable="false" @click="modalStore.showModal('add', 'group')">
         <template #icon>
           <div i-carbon:add />
@@ -153,7 +156,7 @@ const renderStore = useRenderStore()
   max-width: 90%;
 }
 
-.group__header--mobile {
+.group__header--line {
   margin-bottom: 10rem;
 }
 
@@ -168,12 +171,12 @@ const renderStore = useRenderStore()
     max-width: 85%;
   }
 
-  .group__header--mobile {
-    margin-bottom: 16px;
+  .group__header--line {
+    margin-bottom: 4rem;
   }
 
-  .group__setting--all {
-    padding-top: 3.5rem;
-  }
+  // .group__setting--all {
+  //   padding-top: 3.5rem;
+  // }
 }
 </style>

@@ -7,10 +7,11 @@ const siteStore = useSiteStore()
 const route = useRoute()
 
 function handleCateClick(cateIndex: number) {
-  if (route.name === 'setting' && siteStore.cateIndex === cateIndex)
+  if (route.name === 'setting' && siteStore.cateIndex === cateIndex) {
     modalStore.showModal('update', 'cate')
-  else
+  } else {
     siteStore.setCateIndex(cateIndex)
+  }
 }
 
 const settingStore = useSettingStore()
@@ -39,7 +40,11 @@ function handleDragEnd(e: any) {
 </script>
 
 <template>
-  <section flex-center text-14 md="text-15" lg="text-15">
+  <section 
+    :class="{
+      'nav__items': !settingStore.isSetting
+    }"
+    flex-center text-14 pb-16 md="text-15 pb-32" lg="text-15 pb-32">
     <draggable
       class="flex gap-x-12"
       :list="siteStore.data"
@@ -101,5 +106,9 @@ function handleDragEnd(e: any) {
 
 .site--select {
   background-color: var(--setting-group-bg-c);
+}
+
+.nav__items {
+  padding-bottom: 8rem;
 }
 </style>
