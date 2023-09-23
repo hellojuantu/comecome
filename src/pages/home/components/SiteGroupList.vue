@@ -48,7 +48,7 @@ const renderStore = useRenderStore()
           <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
                 'cursor-pointer': settingStore.isSetting,
-                'group__header--setting': settingStore.isSetting && settingStore.isWhiteTheme,
+                'group__header--setting': settingStore.isWhiteTheme,
                 'group__header--setting--colorful': !settingStore.isWhiteTheme,
               }" shrink-0 px-0 py-4 whitespace-nowrap text-15 op-80 overflow-hidden>
               {{ group.name }}

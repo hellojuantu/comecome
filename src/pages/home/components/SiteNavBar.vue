@@ -36,8 +36,6 @@ function handleDragEnd(e: any) {
     }
   }
 }
-
-console.log("settingStore.settings.isWhiteTheme", settingStore.isWhiteTheme)
 </script>
 
 <template>
