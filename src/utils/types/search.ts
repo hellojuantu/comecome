@@ -1,14 +1,7 @@
-import type { SettingItem } from '@/stores/setting'
+import type { SettingItem, Search } from '@/types'
 
-export interface Search {
-  name: string
-  enName: string
-  url: string
-  key: string
-  favicon: string
-  s: string
-}
 export type SearchSetting = SettingItem<Search>
+
 export const searchList: SearchSetting[] = [
   {
     name: '必应',

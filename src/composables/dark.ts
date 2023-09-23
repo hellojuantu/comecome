@@ -1,4 +1,4 @@
-import type { WebStyle } from '@/utils'
+import type { DarkMode } from '@/types'
 import { usePreferredColorScheme } from '@vueuse/core'
 
 export const isDark = useDark()
@@ -6,7 +6,7 @@ export const toggleDark = useToggle(isDark)
 
 export function useSiteStyle() {
     const settingStore = useSettingStore()
-    const siteStyle = computed(() => (settingStore.getSettingItem('siteStyle').value as WebStyle).enName as string)
+    const siteStyle = computed(() => (settingStore.getSettingItem('siteStyle').value as DarkMode).enName as string)
 
     return {
         siteStyle,

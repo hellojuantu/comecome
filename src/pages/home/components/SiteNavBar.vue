@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
-import type { Category } from '@/stores/site'
+import type { Category } from '@/types'
 
 const modalStore = useModalStore()
 const siteStore = useSiteStore()
@@ -62,8 +62,7 @@ function handleDragEnd(e: any) {
             'border-$text-c text-$text-c': siteStore.cateIndex === i && settingStore.isWhiteTheme,
             // colorful setting
             'border-$primary-c text-$primary-c': siteStore.cateIndex === i && !settingStore.isWhiteTheme,
-            'hover:text-$primary-c': !settingStore.isSetting && !settingStore.isWhiteTheme,
-            'hover:text-$primary-c': settingStore.isSetting && !settingStore.isWhiteTheme,
+            'hover:text-$primary-c': !settingStore.isWhiteTheme,
             // common setting
             'site--setting': settingStore.isSetting,
             'site--select': siteStore.cateIndex === i && settingStore.isSetting,

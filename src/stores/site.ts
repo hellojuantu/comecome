@@ -1,22 +1,5 @@
 import preset from '@/preset.json'
-
-export interface Site {
-  id: number
-  name: string
-  url: string
-  favicon?: string
-  bgColor?: string
-}
-export interface Group {
-  id: number
-  name: string
-  siteList: Site[]
-}
-export interface Category {
-  id: number
-  name: string
-  groupList: Group[]
-}
+import type { Category, Group, Site } from '@/types'
 
 function loadData(): Category[] | undefined {
   const data = localStorage.getItem('cache')

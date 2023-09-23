@@ -33,7 +33,7 @@ const modelValue = computed({
     </div>
     <n-select
       v-model:value="modelValue"
-      :options="options"
+      :options="options as any"
       v-bind="$attrs"
       :show-checkmark="false"
     />

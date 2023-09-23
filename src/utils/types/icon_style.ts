@@ -1,10 +1,4 @@
-import type { SettingItem } from '@/stores/setting'
-
-export interface IconStyle {
-  name: string
-  enName: string
-  style: Partial<CSSStyleDeclaration>
-}
+import type { SettingItem, IconStyle } from '@/types'
 
 export type IconStyleSetting = SettingItem<IconStyle>
 

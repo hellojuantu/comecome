@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import SettingSelection from './SettingSelection.vue'
-import type { Settings } from '@/stores/setting'
-import type { Category } from '@/stores/site'
-import type { ThemeSetting, getRandomComplexNumber } from '@/utils'
+import type { Settings, Category } from '@/types'
+import type { ThemeSetting } from '@/utils'
 import { iconStyleList, searchList, themeList, siteStyleList } from '@/utils'
 import ResetModal from './ResetModal.vue'
 import preset from '@/preset.json'

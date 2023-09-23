@@ -1,19 +1,6 @@
 import { iconStyleList, searchList, themeList, siteStyleList } from '@/utils'
 import preset from '@/preset.json'
-
-export interface Settings {
-  theme: string
-  search: string
-  iconStyle: string
-  siteStyle: string
-}
-
-export interface SettingItem<T> {
-  name: string
-  enName: string
-  value: T
-  defaultKey: string
-}
+import type { Settings, SettingItem } from '@/types'
 
 export type SettingKey = keyof Settings
 

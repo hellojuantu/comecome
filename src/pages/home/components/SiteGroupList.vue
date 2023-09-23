@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import draggable from 'vuedraggable'
 import Favicon from './Favicon.vue'
-import type { Group, Site } from '@/stores/site'
+import type { Group, Site } from '@/types'
 
 const modalStore = useModalStore()
 const siteStore = useSiteStore()

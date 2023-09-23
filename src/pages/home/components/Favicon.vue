@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import { getFaviconUrl, getRandomDarkColor } from '@/utils'
-import { Site } from '@/stores/site';
+import { Site } from '@/types';
 
 const props = defineProps({
   site: {

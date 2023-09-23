@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { vOnClickOutside } from '@vueuse/components'
-import type { Search } from '@/utils'
+import type { Search } from '@/types'
 import { getFaviconUrl, searchList } from '@/utils'
 import searchEngine from '@/utils/search-engine';
 import $_ from 'lodash'
