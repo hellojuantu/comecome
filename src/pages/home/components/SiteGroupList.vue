@@ -50,6 +50,7 @@ const renderStore = useRenderStore()
                 'cursor-pointer': settingStore.isSetting,
                 'group__header--setting': settingStore.isWhiteTheme,
                 'group__header--setting--colorful': !settingStore.isWhiteTheme,
+                'site--setting': settingStore.isSetting,
               }" shrink-0 px-0 py-4 whitespace-nowrap text-15 op-80 overflow-hidden>
               {{ group.name }}
             </span>
@@ -121,7 +122,7 @@ const renderStore = useRenderStore()
 }
 
 .group__header--setting {
-  background-color: var(--site-hover-c);
+  background-color: var(--setting-group-bg-c);
   color: var(--text-c);
   margin: 0 2px;
   padding: 4px;
@@ -130,7 +131,7 @@ const renderStore = useRenderStore()
 }
 
 .group__header--setting--colorful {
-  background-color: var(--site-hover-c);
+  background-color: var(--setting-group-bg-c);
   color: var(--primary-c);
   margin: 0 2px;
   padding: 4px;
@@ -143,6 +144,10 @@ const renderStore = useRenderStore()
   overflow: hidden;
   align-items: center;
   flex: 0 0 10%;
+}
+
+.site--setting:hover {
+  background-color: var(--site-hover-c);
 }
 
 .group__content--all {

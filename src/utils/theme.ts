@@ -23,7 +23,7 @@ export const themeList: ThemeSetting[] = [
       primaryC: '#5e5e5e',
       primaryLightC: '#777777',
       primaryDarkC: '#333333',
-      siteHoverC: '#77777722',
+      siteHoverC: '#94949430',
       settingBorderC: '#737373',
       settingGroupBgC: '#77777730',
       bgC: '#f3f4f6',
