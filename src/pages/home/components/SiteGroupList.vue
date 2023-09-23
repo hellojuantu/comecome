@@ -108,7 +108,7 @@ const renderStore = useRenderStore()
       </template>
     </draggable>
     <!-- Add group button -->
-    <div v-if="addGroupVisible" my-16 md="my-32" lg="my-32">
+    <div v-if="addGroupVisible" my-20 md="my-32" lg="my-32">
       <n-button type="primary" secondary w-full :focusable="false" @click="modalStore.showModal('add', 'group')">
         <template #icon>
           <div i-carbon:add />
