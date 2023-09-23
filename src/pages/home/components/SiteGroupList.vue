@@ -126,7 +126,6 @@ const renderStore = useRenderStore()
   color: var(--text-c);
   margin: 0 2px;
   padding: 4px;
-  font-size: 14px;
   border-radius: 2px;
 }
 
@@ -135,7 +134,6 @@ const renderStore = useRenderStore()
   color: var(--primary-c);
   margin: 0 2px;
   padding: 4px;
-  font-size: 14px;
   border-radius: 2px;
 }
 
