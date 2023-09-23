@@ -134,7 +134,7 @@ function loadData(data: any) {
       />
       <SettingSelection
         v-model="settingStore.settings.iconStyle"
-        title="图标颜色"
+        title="图标风格"
         :options="iconStyleList"
         :render-label="renderColor"
         label-field="name"
@@ -143,7 +143,7 @@ function loadData(data: any) {
       />
       <SettingSelection
         v-model="settingStore.settings.siteStyle"
-        title="主题模式"
+        title="色彩模式"
         :options="siteStyleList"
         :render-label="renderColor"
         label-field="name"

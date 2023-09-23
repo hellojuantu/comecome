@@ -7,12 +7,16 @@ export interface Settings {
   iconStyle: string
   siteStyle: string
 }
+
 export interface SettingItem<T> {
   name: string
   enName: string
   value: T
+  defaultKey: string
 }
+
 export type SettingKey = keyof Settings
+
 export function loadSettings(): Settings | undefined {
   const settings = localStorage.getItem('settings')
   return settings ? JSON.parse(settings) : undefined
@@ -27,7 +31,14 @@ export const settingData: { [K in SettingKey]: SettingItem<any>[] } = {
 
 export const useSettingStore = defineStore('theme', () => {
   const route = useRoute()
-  const isSetting = computed(() => route.name === 'setting')
+  const isSetting = ref(false)
+
+  watch(route, () => {
+    if (route.name === 'setting')
+      isSetting.value = true
+    else
+      isSetting.value = false
+  }, { immediate: true })
 
   const settingCache = loadSettings()
   const presetSetting = preset.settings
