@@ -72,7 +72,7 @@ body::-webkit-scrollbar {
   filter: none !important;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 767px) {
   .logo-head {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -96,7 +96,7 @@ body::-webkit-scrollbar {
 
 .no_select {
   -moz-user-select:none;
-  -webkit-user-select:none; 
+  -webkit-user-select:none;
   -ms-user-select:none;
   user-select:none;
   user-drag:none;

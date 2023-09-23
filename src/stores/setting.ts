@@ -33,7 +33,6 @@ export const useSettingStore = defineStore('theme', () => {
   const presetSetting = preset.settings
   const settings = reactive<Settings>((() => {
     if (settingCache) {
-      // 判断设置项是否变更
       for (const key in presetSetting) {
         if (!settingCache[key as SettingKey])
           return Object.assign(presetSetting, settingCache)
@@ -42,6 +41,7 @@ export const useSettingStore = defineStore('theme', () => {
     }
     return presetSetting
   })())
+
   function getSettingItem(key: SettingKey) {
     return settingData[key].find(item => item.enName === settings[key])!
   }
@@ -49,6 +49,7 @@ export const useSettingStore = defineStore('theme', () => {
   function setSettings(newSettings: Partial<Settings>) {
     Object.assign(settings, newSettings)
   }
+
   watch(settings, () => {
     localStorage.setItem('settings', JSON.stringify(toRaw(settings)))
   }, { deep: true })
@@ -58,7 +59,10 @@ export const useSettingStore = defineStore('theme', () => {
     isDragging.value = status
   }
 
+  const isWhiteTheme = computed(() => settings.theme === 'MoonWhite')
+
   return {
+    isWhiteTheme,
     isSetting,
     settings,
     isDragging,

@@ -39,7 +39,7 @@ function handleFaviconError(site: Site) {
 </script>
 
 <template>
-  <div :style="iconStyle" h-22 w-22>
+  <div :style="iconStyle" h-18 w-18 md="h-22 w-22" lg="h-22 w-22">
     <img
       v-if="!isGen"
       :src="site.favicon || getFaviconUrl(site.url)"

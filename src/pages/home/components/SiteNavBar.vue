@@ -36,6 +36,8 @@ function handleDragEnd(e: any) {
     }
   }
 }
+
+console.log("settingStore.settings.isWhiteTheme", settingStore.isWhiteTheme)
 </script>
 
 <template>
@@ -57,11 +59,16 @@ function handleDragEnd(e: any) {
         <div
           class="dragging"
           :class="{
-            'border-$primary-c text-$primary-c': siteStore.cateIndex === i,
-            'hover:text-$primary-c': !settingStore.isSetting,
+            // white setting
+            'text-$primary-light-c hover:text-$text-c': settingStore.isWhiteTheme,
+            'border-$text-c text-$text-c': siteStore.cateIndex === i && settingStore.isWhiteTheme,
+            // colorful setting
+            'border-$primary-c text-$primary-c': siteStore.cateIndex === i && !settingStore.isWhiteTheme,
+            'hover:text-$primary-c': !settingStore.isSetting && !settingStore.isWhiteTheme,
+            'hover:text-$primary-c': settingStore.isSetting && !settingStore.isWhiteTheme,
+            // common setting
             'site--setting': settingStore.isSetting,
             'site--select': siteStore.cateIndex === i && settingStore.isSetting,
-            'hover:bg-$site-hover-c': settingStore.isSetting,
           }"
           border="b-2 transparent"
           cursor-pointer transition-color duration-300 p-4 shrink-0

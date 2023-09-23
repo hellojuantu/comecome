@@ -13,6 +13,7 @@ function handleSiteClick(url: string, groupIndex: number, siteIndex: number, e: 
     modalStore.showModal('update', 'site', groupIndex, siteIndex)
   }
 }
+
 function handleGroupClick(groupIndex: number) {
   if (route.name === 'setting') {
     modalStore.showModal('update', 'group', groupIndex)
@@ -27,7 +28,7 @@ const renderStore = useRenderStore()
 </script>
 
 <template>
-  <section :key="renderStore.siteGroupListKey" pt-14 pb-28 text-14 md="text-15 pt-28" lg="text-15 pt-28">
+  <section :key="renderStore.siteGroupListKey" :class="{'group__setting--all': settingStore.isSetting}" py-28 text-14 md="text-15 pt-28" lg="text-15 pt-28">
     <draggable
       :list="siteStore.data[siteStore.cateIndex].groupList"
       item-key="id"
@@ -47,8 +48,8 @@ const renderStore = useRenderStore()
           <div flex class="group__header--all">
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
                 'cursor-pointer': settingStore.isSetting,
-                'group__header--setting': settingStore.isSetting,
-                'hover:bg-$site-hover-c': settingStore.isSetting && !settingStore.isDragging,
+                'group__header--setting': settingStore.isSetting && settingStore.isWhiteTheme,
+                'group__header--setting--colorful': !settingStore.isWhiteTheme,
               }" shrink-0 px-0 py-4 whitespace-nowrap text-15 op-80 overflow-hidden>
               {{ group.name }}
             </span>
@@ -121,6 +122,16 @@ const renderStore = useRenderStore()
 
 .group__header--setting {
   background-color: var(--site-hover-c);
+  color: var(--text-c);
+  margin: 0 2px;
+  padding: 4px;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+.group__header--setting--colorful {
+  background-color: var(--site-hover-c);
+  color: var(--primary-c);
   margin: 0 2px;
   padding: 4px;
   font-size: 14px;
@@ -156,6 +167,10 @@ const renderStore = useRenderStore()
 
   .group__header--mobile {
     margin-bottom: 16px;
+  }
+
+  .group__setting--all {
+    padding-top: 3.5rem;
   }
 }
 </style>
