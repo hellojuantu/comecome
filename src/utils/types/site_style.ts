@@ -9,13 +9,13 @@ export const siteStyleList: DarkModeSetting[] = [
       value: { name: '系统自动', enName: 'auto' }
   },
   {
-      name: '夜晚模式',
+      name: '夜间模式',
       enName: 'dark',
-      value: { name: '夜晚模式', enName: 'dark' }
+      value: { name: '夜间模式', enName: 'dark' }
   },
   {
-      name: '白天模式',
+      name: '日间模式',
       enName: 'light',
-      value: { name: '白天模式', enName: 'light' }
+      value: { name: '日间模式', enName: 'light' }
   },
 ]
