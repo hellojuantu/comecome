@@ -17,8 +17,8 @@ dependencies:
   axios-jsonp:
     specifier: ^1.0.4
     version: 1.0.4
-  uuid: ^9.0.1
-    specifier: ^1.0.4
+  uuid:
+    specifier: ^9.0.1
     version: 9.0.1
   dayjs:
     specifier: ^1.11.7
