@@ -115,7 +115,7 @@ function loadData(data: any) {
     <div grid grid-cols-2 gap-24 lg:grid-cols-2 md:grid-cols-2>
       <SettingSelection
         v-model="settingStore.settings.theme"
-        title="风格样式"
+        title="主题风格"
         :options="themeList"
         :render-label="renderThemeLabel"
         label-field="name"

@@ -17,6 +17,9 @@ dependencies:
   axios-jsonp:
     specifier: ^1.0.4
     version: 1.0.4
+  uuid: ^9.0.1
+    specifier: ^1.0.4
+    version: 9.0.1
   dayjs:
     specifier: ^1.11.7
     version: 1.11.7
@@ -1955,6 +1958,13 @@ packages:
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  /uuid/9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uuid/-/uuid-9.0.1.tgz}
+    name: uuid
+    version: 9.0.1
+    hasBin: true
     dev: false
 
   /balanced-match@1.0.2:
