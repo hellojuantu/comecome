@@ -48,7 +48,7 @@ const renderStore = useRenderStore()
           }"
           flex style="align-items: center;">
           <!-- Group header -->
-          <div flex class="group__header--all">
+          <div class="group__header--all" grid justify-start>
             <span class="group__handle" @click="handleGroupClick(i)" :class="{
                 'cursor-pointer': settingStore.isSetting,
                 'group__header--setting': settingStore.isWhiteTheme,
