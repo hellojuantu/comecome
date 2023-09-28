@@ -89,7 +89,7 @@ const renderStore = useRenderStore()
                     style="margin: 0 2px;"
                   >
                     <Favicon class="shrink-0" :site="site" :site-index="index" :group-index="i" />
-                    <span whitespace-nowrap text-14 md="text-15" lg="text-15" overflow-hidden>{{ site.name }}</span>
+                    <span ellipsis whitespace-nowrap text-14 md="text-15" lg="text-15" overflow-hidden>{{ site.name }}</span>
                   </a>
                 </div>
               </template>
